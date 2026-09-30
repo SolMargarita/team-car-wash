@@ -962,7 +962,11 @@
 
             <div class="form-card">
 
-                <form id="formularioCliente">
+                <form id="formularioCliente"
+    action="https://script.google.com/macros/s/AKfycbzgTMdUj4cSlr6B-kvCzwlLcOo_u2rY8rZeLVRg_37ydKL81Xfi5Lk9RT8lR1WeaZIozA/exec"
+    method="POST"
+    target="formularioOculto"
+>
 
     <input
         type="text"
@@ -1002,13 +1006,11 @@
 
     </select>
 
-
     <input
         type="date"
         name="ultimoLavado"
         required
     >
-
 
     <select name="lavados" required>
 
@@ -1038,16 +1040,19 @@
 
     </select>
 
-
     <button type="submit">
         ⭐ Crear mi registro
     </button>
-
 
     <div id="mensajeFormulario"></div>
 
 </form>
 
+<iframe
+    name="formularioOculto"
+    id="formularioOculto"
+    style="display:none;">
+</iframe> 
             </div>
 
         </section>
