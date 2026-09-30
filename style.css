@@ -1,523 +1,508 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="es">
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f5f7fa;
-    color: #1a1a1a;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Fidelización | Team Car Wash</title>
 
-/* NAVBAR */
+    <link rel="stylesheet" href="style.css">
 
-header {
-    background: #07111f;
-    padding: 20px 8%;
-}
+    <script src="script.js" defer></script>
+</head>
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+<body>
 
-nav h1 {
-    color: white;
-}
+    <!-- =========================
+         HEADER
+    ========================== -->
 
-nav ul {
-    display: flex;
-    gap: 25px;
-    list-style: none;
-}
+    <header class="header-fidelizacion">
 
-nav a {
-    color: white;
-    text-decoration: none;
-}
+        <nav>
 
+            <h1>TEAM <span>CAR WASH</span></h1>
 
-/* HERO */
+            <ul>
+                <li>
+                    <a href="index.html">Inicio</a>
+                </li>
 
-.hero {
-    min-height: 80vh;
+                <li>
+                    <a href="index.html#servicios">Servicios</a>
+                </li>
 
-    display: flex;
-    align-items: center;
+                <li>
+                    <a href="index.html#contacto">Contacto</a>
+                </li>
+            </ul>
 
-    padding: 80px 10%;
+        </nav>
 
-    background:
-        linear-gradient(
-            rgba(0, 0, 0, 0.6),
-            rgba(0, 0, 0, 0.6)
-        ),
-        url("https://images.unsplash.com/photo-1520340356584-f9917d1eea6f")
-        center/cover;
-}
+    </header>
 
-.hero-text {
-    max-width: 600px;
-    color: white;
-}
 
-.hero h2 {
-    font-size: 55px;
-    margin-bottom: 20px;
-}
+    <!-- =========================
+         HERO
+    ========================== -->
 
-.hero p {
-    font-size: 20px;
-    margin-bottom: 30px;
-}
+    <section class="hero-fidelizacion">
 
-.boton {
-    display: inline-block;
+        <div class="hero-contenido">
 
-    background: #00a8ff;
-    color: white;
+            <span class="etiqueta">
+                ⭐ PROGRAMA TEAM CAR WASH
+            </span>
 
-    padding: 15px 30px;
+            <h2>
+                Cada lavado cuenta.
+                <br>
+                <span>Tu vehículo también merece beneficios.</span>
+            </h2>
 
-    border-radius: 8px;
+            <p>
+                Regístrate en nuestro programa de fidelización,
+                lleva el control de tus lavados y recibe beneficios
+                especiales por seguir confiando en Team Car Wash.
+            </p>
 
-    text-decoration: none;
+            <a href="#registro" class="boton-principal">
+                🚗 Registrarme ahora
+            </a>
 
-    font-weight: bold;
-}
+        </div>
 
+    </section>
 
-/* SERVICIOS */
 
-section {
-    padding: 80px 10%;
-}
+    <!-- =========================
+         BENEFICIOS
+    ========================== -->
 
-section h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 35px;
-}
+    <section class="beneficios-fidelizacion">
 
-.servicios {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
+        <div class="titulo-seccion">
 
-.card {
-    background: white;
+            <span>¿QUÉ OBTIENES?</span>
 
-    width: 300px;
+            <h2>
+                Más que un lavado
+            </h2>
 
-    padding: 30px;
+            <p>
+                Queremos construir una relación duradera
+                con nuestros clientes.
+            </p>
 
-    border-radius: 15px;
+        </div>
 
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 
-    text-align: center;
-}
+        <div class="beneficios-grid">
 
-.card h3 {
-    margin-bottom: 15px;
-}
+            <div class="beneficio-item">
 
-.card p {
-    margin-bottom: 20px;
-    line-height: 1.5;
-}
+                <div class="icono">
+                    📅
+                </div>
 
-.card strong {
-    font-size: 24px;
-    color: #0099ff;
-}
+                <h3>Recordatorios</h3>
 
+                <p>
+                    Te recordaremos cuándo puede ser
+                    un buen momento para volver a lavar
+                    tu vehículo.
+                </p>
 
-/* NOSOTROS */
+            </div>
 
-.nosotros {
-    background: #07111f;
-    color: white;
-    text-align: center;
-}
 
-.nosotros p {
-    max-width: 800px;
-    margin: 15px auto;
-    line-height: 1.6;
-}
+            <div class="beneficio-item">
 
+                <div class="icono">
+                    🎁
+                </div>
 
-/* CONTACTO */
+                <h3>Recompensas</h3>
 
-#contacto {
-    text-align: center;
-}
-.correo 
-{
-    display: inline-block;
-    background: #00a8ff;
-    color: white;
-    padding: 15px 25px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 20px;
-}
+                <p>
+                    Tus visitas se acumulan para que
+                    puedas obtener descuentos y
+                    beneficios especiales.
+                </p>
 
-.correo:hover {
-    opacity: 0.85;
-}
-}
+            </div>
 
 
-/* FOOTER */
+            <div class="beneficio-item">
 
-footer {
-    background: #050b13;
-    color: white;
+                <div class="icono">
+                    ⭐
+                </div>
 
-    text-align: center;
+                <h3>Cliente frecuente</h3>
 
-    padding: 25px;
-}
+                <p>
+                    Recibe beneficios especiales por
+                    continuar visitando Team Car Wash.
+                </p>
 
+            </div>
 
-/* CELULAR */
+        </div>
 
-@media (max-width: 700px) {
+    </section>
 
-    nav {
-        flex-direction: column;
-        gap: 20px;
-    }
 
-    nav ul {
-        flex-direction: column;
-        text-align: center;
-    }
+    <!-- =========================
+         PROGRESO
+    ========================== -->
 
-    .hero h2 {
-        font-size: 38px;
-    }
+    <section class="progreso-seccion">
 
-    .hero {
-        text-align: center;
-    }
+        <div class="progreso-contenido">
 
-    ```css
-/* ============================= */
-/* PÁGINA DE FIDELIZACIÓN */
-/* ============================= */
+            <div>
 
-.fidelizacion {
-    text-align: center;
-    max-width: 1100px;
-    margin: auto;
-}
+                <span class="mini-titulo">
+                    TU FIDELIZACIÓN
+                </span>
 
-.fidelizacion > p {
-    margin-bottom: 40px;
-}
+                <h2>
+                    Cada visita te acerca
+                    a tu próximo beneficio.
+                </h2>
 
+                <p>
+                    Registra tus lavados y comienza a
+                    acumular beneficios dentro de
+                    Team Car Wash.
+                </p>
 
-/* TARJETA DEL CLIENTE */
+            </div>
 
-.cliente-card,
-.recordatorio {
-    background: white;
-    padding: 35px;
-    margin: 30px auto;
-    max-width: 700px;
-    border-radius: 15px;
 
-    box-shadow:
-        0 5px 20px rgba(0,0,0,0.1);
-}
+            <div class="progreso-card">
 
+                <div class="progreso-top">
 
-.progreso {
-    margin-top: 25px;
-}
+                    <span>
+                        🚗 Lavados realizados
+                    </span>
 
+                    <strong>
+                        3 / 5
+                    </strong>
 
-.barra {
-    width: 100%;
-    height: 20px;
+                </div>
 
-    background: #e5e7eb;
 
-    border-radius: 20px;
+                <div class="barra">
 
-    overflow: hidden;
+                    <div
+                        class="progreso-barra"
+                        style="width: 60%;">
+                    </div>
 
-    margin-bottom: 10px;
-}
+                </div>
 
 
-.progreso-barra {
-    height: 100%;
+                <p>
+                    Te faltan <strong>2 lavados</strong>
+                    para alcanzar tu próximo beneficio.
+                </p>
 
-    background: #00a8ff;
-}
+            </div>
 
+        </div>
 
-.beneficio {
-    margin-top: 25px;
-}
+    </section>
 
 
-/* RECORDATORIO */
+    <!-- =========================
+         BENEFICIOS
+    ========================== -->
 
-.fecha {
-    font-size: 24px;
+    <section class="recompensas">
 
-    margin: 25px 0;
-}
+        <div class="titulo-seccion">
 
+            <span>TUS RECOMPENSAS</span>
 
-/* BENEFICIOS */
+            <h2>
+                Lava, acumula y disfruta.
+            </h2>
 
-.beneficios {
-    margin-top: 70px;
-}
+        </div>
 
 
-.beneficio-grid,
-.planes-grid {
+        <div class="recompensas-grid">
 
-    display: flex;
+            <div class="recompensa-card">
 
-    justify-content: center;
+                <span>01</span>
 
-    gap: 25px;
+                <h3>
+                    3 lavados
+                </h3>
 
-    flex-wrap: wrap;
+                <p>
+                    Obtén un 10% de descuento
+                    en tu próximo servicio.
+                </p>
 
-    margin-top: 30px;
-}
+            </div>
 
 
-.beneficio-card {
+            <div class="recompensa-card destacada">
 
-    background: white;
+                <span>02</span>
 
-    width: 280px;
+                <h3>
+                    5 lavados
+                </h3>
 
-    padding: 30px;
+                <p>
+                    Recibe un lavado básico
+                    completamente gratis.
+                </p>
 
-    border-radius: 15px;
+                <strong>
+                    ⭐ BENEFICIO ESPECIAL
+                </strong>
 
-    box-shadow:
-        0 5px 20px rgba(0,0,0,0.1);
-}
+            </div>
 
 
-/* PLANES */
+            <div class="recompensa-card">
 
-.planes {
-    margin-top: 80px;
-}
+                <span>03</span>
 
+                <h3>
+                    Cliente frecuente
+                </h3>
 
-.plan {
+                <p>
+                    Accede a promociones y
+                    beneficios exclusivos.
+                </p>
 
-    background: white;
+            </div>
 
-    width: 300px;
+        </div>
 
-    padding: 35px;
+    </section>
 
-    border-radius: 15px;
 
-    box-shadow:
-        0 5px 20px rgba(0,0,0,0.1);
-}
+    <!-- =========================
+         FORMULARIO
+    ========================== -->
 
+    <section id="registro" class="registro">
 
-.plan strong {
+        <div class="registro-intro">
 
-    display: block;
+            <span>
+                🚗 ÚNETE A TEAM CAR WASH
+            </span>
 
-    font-size: 24px;
+            <h2>
+                Registra tu vehículo
+            </h2>
 
-    color: #00a8ff;
+            <p>
+                Completa tus datos para comenzar a formar
+                parte de nuestro programa de fidelización.
+            </p>
 
-    margin: 20px 0;
-}
+        </div>
 
 
-.plan button {
+        <div class="formulario-card">
 
-    border: none;
+            <form id="formularioCliente">
 
-    background: #00a8ff;
 
-    color: white;
+                <!-- NOMBRE -->
 
-    padding: 12px 25px;
+                <div class="campo">
 
-    border-radius: 8px;
+                    <label for="nombre">
+                        Nombre completo
+                    </label>
 
-    cursor: pointer;
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Ej: Juan Pérez"
+                        required>
 
-    font-weight: bold;
+                </div>
 
-}
 
+                <!-- CORREO -->
 
-.destacado {
+                <div class="campo">
 
-    border: 3px solid #00a8ff;
-}
+                    <label for="correo">
+                        Correo electrónico
+                    </label>
 
+                    <input
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        placeholder="Ej: juan@gmail.com"
+                        required>
 
-/* BOTÓN CORREO */
+                </div>
 
-.correo {
 
-    display: inline-block;
+                <!-- VEHÍCULO -->
 
-    background: #00a8ff;
+                <div class="campo">
 
-    color: white;
+                    <label for="vehiculo">
+                        Tipo de vehículo
+                    </label>
 
-    padding: 15px 25px;
+                    <select
+                        id="vehiculo"
+                        name="vehiculo"
+                        required>
 
-    border-radius: 8px;
+                        <option value="">
+                            Selecciona una opción
+                        </option>
 
-    text-decoration: none;
+                        <option value="Automóvil">
+                            🚗 Automóvil
+                        </option>
 
-    font-weight: bold;
+                        <option value="Camioneta">
+                            🚙 Camioneta
+                        </option>
 
-    margin-top: 15px;
-}
+                        <option value="Moto">
+                            🏍️ Moto
+                        </option>
 
+                        <option value="Otro">
+                            🚘 Otro
+                        </option>
 
-.correo:hover {
+                    </select>
 
-    opacity: 0.85;
+                </div>
 
-    ```css
-/* ============================= */
-/* FORMULARIO DE FIDELIZACIÓN */
-/* ============================= */
 
-.registro {
+                <!-- FECHA -->
 
-    max-width: 700px;
+                <div class="campo">
 
-    margin: 80px auto;
+                    <label for="ultimoLavado">
+                        Fecha de tu último lavado
+                    </label>
 
-    background: white;
+                    <input
+                        type="date"
+                        id="ultimoLavado"
+                        name="ultimoLavado"
+                        required>
 
-    padding: 45px;
+                </div>
 
-    border-radius: 20px;
 
-    box-shadow:
-        0 5px 25px rgba(0,0,0,0.1);
+                <!-- LAVADOS -->
 
-    text-align: center;
+                <div class="campo">
 
-}
+                    <label for="lavados">
+                        ¿Cuántos lavados has realizado?
+                    </label>
 
+                    <select
+                        id="lavados"
+                        name="lavados"
+                        required>
 
-.registro h2 {
+                        <option value="">
+                            Selecciona una opción
+                        </option>
 
-    margin-bottom: 15px;
+                        <option value="1">
+                            1 lavado
+                        </option>
 
-}
+                        <option value="2">
+                            2 lavados
+                        </option>
 
+                        <option value="3">
+                            3 lavados
+                        </option>
 
-.registro > p {
+                        <option value="4">
+                            4 lavados
+                        </option>
 
-    margin-bottom: 35px;
+                        <option value="5 o más">
+                            5 o más lavados
+                        </option>
 
-    line-height: 1.5;
+                    </select>
 
-}
+                </div>
 
 
-.campo {
+                <!-- BOTÓN -->
 
-    text-align: left;
+                <button
+                    type="submit"
+                    class="boton-registro">
 
-    margin-bottom: 20px;
+                    ⭐ Crear mi registro
 
-}
+                </button>
 
 
-.campo label {
+            </form>
 
-    display: block;
 
-    margin-bottom: 8px;
+            <!-- MENSAJE -->
 
-    font-weight: bold;
+            <div id="mensajeFormulario"></div>
 
-}
+        </div>
 
+    </section>
 
-.campo input,
-.campo select {
 
-    width: 100%;
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
-    padding: 14px;
+    <footer>
 
-    border: 1px solid #ddd;
+        <h3>
+            TEAM CAR WASH
+        </h3>
 
-    border-radius: 8px;
+        <p>
+            Lava. Cuida. Regresa.
+        </p>
 
-    font-size: 16px;
+        <p>
+            📧 teamcarwash923@gmail.com
+        </p>
 
-}
+        <small>
+            © 2026 Team Car Wash - Lava Autos
+        </small>
 
+    </footer>
 
-.registro button {
+</body>
 
-    width: 100%;
-
-    padding: 15px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    background: #00a8ff;
-
-    color: white;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    margin-top: 10px;
-
-}
-
-
-.registro button:hover {
-
-    opacity: 0.85;
-
-}
-
-
-#mensajeFormulario {
-
-    margin-top: 25px;
-
-    font-weight: bold;
-
-
-
-}
+</html>
