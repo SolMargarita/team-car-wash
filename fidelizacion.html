@@ -1,52 +1,41 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Fidelización | Team Car Wash</title>
 
     <link rel="stylesheet" href="style.css">
+
     <script src="script.js" defer></script>
-
 </head>
-
 
 <body>
 
-    <!-- ENCABEZADO -->
+    <!-- =========================
+         HEADER
+    ========================== -->
 
-    <header>
+    <header class="header-fidelizacion">
 
         <nav>
 
-            <h1>TEAM CAR WASH</h1>
+            <h1>TEAM <span>CAR WASH</span></h1>
 
             <ul>
-
                 <li>
-                    <a href="index.html">
-                        Inicio
-                    </a>
+                    <a href="index.html">Inicio</a>
                 </li>
 
                 <li>
-                    <a href="index.html#servicios">
-                        Servicios
-                    </a>
+                    <a href="index.html#servicios">Servicios</a>
                 </li>
 
                 <li>
-                    <a href="index.html#contacto">
-                        Contacto
-                    </a>
+                    <a href="index.html#contacto">Contacto</a>
                 </li>
-
             </ul>
 
         </nav>
@@ -54,408 +43,466 @@
     </header>
 
 
-    <!-- CONTENIDO PRINCIPAL -->
+    <!-- =========================
+         HERO
+    ========================== -->
 
-    <main>
+    <section class="hero-fidelizacion">
 
-        <section class="fidelizacion">
+        <div class="hero-contenido">
+
+            <span class="etiqueta">
+                ⭐ PROGRAMA TEAM CAR WASH
+            </span>
 
             <h2>
-                ⭐ Mi fidelización
+                Cada lavado cuenta.
+                <br>
+                <span>Tu vehículo también merece beneficios.</span>
             </h2>
 
             <p>
-                ¡Gracias por seguir confiando en
-                Team Car Wash!
+                Regístrate en nuestro programa de fidelización,
+                lleva el control de tus lavados y recibe beneficios
+                especiales por seguir confiando en Team Car Wash.
             </p>
 
+            <a href="#registro" class="boton-principal">
+                🚗 Registrarme ahora
+            </a>
 
-            <!-- TARJETA DEL CLIENTE -->
+        </div>
 
-            <div class="cliente-card">
+    </section>
 
-                <h3>
-                    🚗 Tu progreso
-                </h3>
 
-                <p>
-                    Lavados realizados
-                </p>
+    <!-- =========================
+         BENEFICIOS
+    ========================== -->
 
-                <div class="progreso">
+    <section class="beneficios-fidelizacion">
 
-                    <div class="barra">
+        <div class="titulo-seccion">
 
-                        <div class="progreso-barra"
-                             style="width: 60%;">
-                        </div>
+            <span>¿QUÉ OBTIENES?</span>
 
-                    </div>
+            <h2>
+                Más que un lavado
+            </h2>
 
-                    <strong>
-                        3 / 5 lavados
-                    </strong>
+            <p>
+                Queremos construir una relación duradera
+                con nuestros clientes.
+            </p>
 
+        </div>
+
+
+        <div class="beneficios-grid">
+
+            <div class="beneficio-item">
+
+                <div class="icono">
+                    📅
                 </div>
 
+                <h3>Recordatorios</h3>
 
-                <p class="beneficio">
-
-                    🎁 Te faltan
-                    <strong>2 lavados</strong>
-                    para obtener tu próximo beneficio.
-
+                <p>
+                    Te recordaremos cuándo puede ser
+                    un buen momento para volver a lavar
+                    tu vehículo.
                 </p>
 
             </div>
 
 
-            <!-- PRÓXIMO LAVADO -->
+            <div class="beneficio-item">
 
-            <div class="recordatorio">
-
-                <h3>
-                    📅 Próximo lavado recomendado
-                </h3>
-
-                <p>
-                    Según tu último servicio,
-                    te recomendamos volver aproximadamente
-                    en 15 días.
-                </p>
-
-                <div class="fecha">
-
-                    🧽
-                    <strong>
-                        15 de octubre de 2026
-                    </strong>
-
+                <div class="icono">
+                    🎁
                 </div>
 
+                <h3>Recompensas</h3>
 
-                <a
-                    href="mailto:teamcarwash923@gmail.com?subject=Recordatorio%20de%20lavado%20-%20Team%20Car%20Wash"
-                    class="correo">
-
-                    📧 Quiero agendar mi lavado
-
-                </a>
+                <p>
+                    Tus visitas se acumulan para que
+                    puedas obtener descuentos y
+                    beneficios especiales.
+                </p>
 
             </div>
 
 
-            <!-- BENEFICIOS -->
+            <div class="beneficio-item">
 
-            <div class="beneficios">
+                <div class="icono">
+                    ⭐
+                </div>
+
+                <h3>Cliente frecuente</h3>
+
+                <p>
+                    Recibe beneficios especiales por
+                    continuar visitando Team Car Wash.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROGRESO
+    ========================== -->
+
+    <section class="progreso-seccion">
+
+        <div class="progreso-contenido">
+
+            <div>
+
+                <span class="mini-titulo">
+                    TU FIDELIZACIÓN
+                </span>
 
                 <h2>
-                    🎁 Tus beneficios
+                    Cada visita te acerca
+                    a tu próximo beneficio.
                 </h2>
 
-
-                <div class="beneficio-grid">
-
-
-                    <div class="beneficio-card">
-
-                        <h3>
-                            ⭐ 3 lavados
-                        </h3>
-
-                        <p>
-                            10% de descuento
-                            en tu próximo servicio.
-                        </p>
-
-                    </div>
-
-
-                    <div class="beneficio-card">
-
-                        <h3>
-                            ⭐ 5 lavados
-                        </h3>
-
-                        <p>
-                            Lavado básico
-                            gratis.
-                        </p>
-
-                    </div>
-
-
-                    <div class="beneficio-card">
-
-                        <h3>
-                            💎 Cliente frecuente
-                        </h3>
-
-                        <p>
-                            Prioridad en turnos
-                            y promociones especiales.
-                        </p>
-
-                    </div>
-
-                </div>
+                <p>
+                    Registra tus lavados y comienza a
+                    acumular beneficios dentro de
+                    Team Car Wash.
+                </p>
 
             </div>
 
 
-<!-- FORMULARIO DE FIDELIZACIÓN -->
+            <div class="progreso-card">
 
-<section class="registro">
+                <div class="progreso-top">
 
-    <h2>
-        ⭐ Regístrate en Team Car Wash
-    </h2>
+                    <span>
+                        🚗 Lavados realizados
+                    </span>
 
-    <p>
-        Registra tus datos y comienza a disfrutar
-        de los beneficios de nuestro programa.
-    </p>
+                    <strong>
+                        3 / 5
+                    </strong>
+
+                </div>
 
 
-    <form id="formularioCliente">
+                <div class="barra">
 
-        <div class="campo">
+                    <div
+                        class="progreso-barra"
+                        style="width: 60%;">
+                    </div>
 
-            <label for="nombre">
-                Nombre completo
-            </label>
+                </div>
 
-            <input
-                type="text"
-                id="nombre"
-                name="nombre"
-                placeholder="Ej: Juan Pérez"
-                required>
+
+                <p>
+                    Te faltan <strong>2 lavados</strong>
+                    para alcanzar tu próximo beneficio.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BENEFICIOS
+    ========================== -->
+
+    <section class="recompensas">
+
+        <div class="titulo-seccion">
+
+            <span>TUS RECOMPENSAS</span>
+
+            <h2>
+                Lava, acumula y disfruta.
+            </h2>
 
         </div>
 
 
-        <div class="campo">
+        <div class="recompensas-grid">
 
-            <label for="correo">
-                Correo electrónico
-            </label>
+            <div class="recompensa-card">
 
-            <input
-                type="email"
-                id="correo"
-                name="correo"
-                placeholder="Ej: juan@gmail.com"
-                required>
+                <span>01</span>
 
-        </div>
-
-
-        <div class="campo">
-
-            <label for="vehiculo">
-                Tipo de vehículo
-            </label>
-
-            <select
-                id="vehiculo"
-                name="vehiculo"
-                required>
-
-                <option value="">
-                    Selecciona una opción
-                </option>
-
-                <option value="Automóvil">
-                    Automóvil
-                </option>
-
-                <option value="Camioneta">
-                    Camioneta
-                </option>
-
-                <option value="Moto">
-                    Moto
-                </option>
-
-                <option value="Otro">
-                    Otro
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="campo">
-
-            <label for="ultimoLavado">
-                Fecha de tu último lavado
-            </label>
-
-            <input
-                type="date"
-                id="ultimoLavado"
-                name="ultimoLavado"
-                required>
-
-        </div>
-
-
-        <div class="campo">
-
-            <label for="lavados">
-                ¿Cuántos lavados has realizado?
-            </label>
-
-            <select
-                id="lavados"
-                name="lavados"
-                required>
-
-                <option value="">
-                    Selecciona
-                </option>
-
-                <option value="1">
-                    1 lavado
-                </option>
-
-                <option value="2">
-                    2 lavados
-                </option>
-
-                <option value="3">
+                <h3>
                     3 lavados
-                </option>
+                </h3>
 
-                <option value="4">
-                    4 lavados
-                </option>
+                <p>
+                    Obtén un 10% de descuento
+                    en tu próximo servicio.
+                </p>
 
-                <option value="5 o más">
-                    5 o más lavados
-                </option>
+            </div>
 
-            </select>
+
+            <div class="recompensa-card destacada">
+
+                <span>02</span>
+
+                <h3>
+                    5 lavados
+                </h3>
+
+                <p>
+                    Recibe un lavado básico
+                    completamente gratis.
+                </p>
+
+                <strong>
+                    ⭐ BENEFICIO ESPECIAL
+                </strong>
+
+            </div>
+
+
+            <div class="recompensa-card">
+
+                <span>03</span>
+
+                <h3>
+                    Cliente frecuente
+                </h3>
+
+                <p>
+                    Accede a promociones y
+                    beneficios exclusivos.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FORMULARIO
+    ========================== -->
+
+    <section id="registro" class="registro">
+
+        <div class="registro-intro">
+
+            <span>
+                🚗 ÚNETE A TEAM CAR WASH
+            </span>
+
+            <h2>
+                Registra tu vehículo
+            </h2>
+
+            <p>
+                Completa tus datos para comenzar a formar
+                parte de nuestro programa de fidelización.
+            </p>
 
         </div>
 
 
-        <button type="submit">
+        <div class="formulario-card">
 
-            ⭐ Registrarme
-
-        </button>
-
-    </form>
+            <form id="formularioCliente">
 
 
-    <div id="mensajeFormulario"></div>
+                <!-- NOMBRE -->
 
-</section>
+                <div class="campo">
 
-            <!-- PLANES -->
+                    <label for="nombre">
+                        Nombre completo
+                    </label>
 
-            <div class="planes">
-
-                <h2>
-                    🚗 Planes Team Car Wash
-                </h2>
-
-
-                <div class="planes-grid">
-
-
-                    <div class="plan">
-
-                        <h3>
-                            PLAN BÁSICO
-                        </h3>
-
-                        <strong>
-                            $35.000 / mes
-                        </strong>
-
-                        <p>
-                            2 lavados mensuales.
-                        </p>
-
-                        <button>
-                            Elegir plan
-                        </button>
-
-                    </div>
-
-
-                    <div class="plan destacado">
-
-                        <h3>
-                            PLAN PREMIUM
-                        </h3>
-
-                        <strong>
-                            $60.000 / mes
-                        </strong>
-
-                        <p>
-                            4 lavados mensuales
-                            + beneficios.
-                        </p>
-
-                        <button>
-                            Elegir plan
-                        </button>
-
-                    </div>
-
-
-                    <div class="plan">
-
-                        <h3>
-                            CLIENTE FRECUENTE
-                        </h3>
-
-                        <strong>
-                            Beneficios especiales
-                        </strong>
-
-                        <p>
-                            Para clientes con
-                            visitas frecuentes.
-                        </p>
-
-                        <button>
-                            Conocer beneficios
-                        </button>
-
-                    </div>
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Ej: Juan Pérez"
+                        required>
 
                 </div>
 
-            </div>
 
-        </section>
+                <!-- CORREO -->
 
-    </main>
+                <div class="campo">
+
+                    <label for="correo">
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        placeholder="Ej: juan@gmail.com"
+                        required>
+
+                </div>
 
 
-    <!-- PIE DE PÁGINA -->
+                <!-- VEHÍCULO -->
+
+                <div class="campo">
+
+                    <label for="vehiculo">
+                        Tipo de vehículo
+                    </label>
+
+                    <select
+                        id="vehiculo"
+                        name="vehiculo"
+                        required>
+
+                        <option value="">
+                            Selecciona una opción
+                        </option>
+
+                        <option value="Automóvil">
+                            🚗 Automóvil
+                        </option>
+
+                        <option value="Camioneta">
+                            🚙 Camioneta
+                        </option>
+
+                        <option value="Moto">
+                            🏍️ Moto
+                        </option>
+
+                        <option value="Otro">
+                            🚘 Otro
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- FECHA -->
+
+                <div class="campo">
+
+                    <label for="ultimoLavado">
+                        Fecha de tu último lavado
+                    </label>
+
+                    <input
+                        type="date"
+                        id="ultimoLavado"
+                        name="ultimoLavado"
+                        required>
+
+                </div>
+
+
+                <!-- LAVADOS -->
+
+                <div class="campo">
+
+                    <label for="lavados">
+                        ¿Cuántos lavados has realizado?
+                    </label>
+
+                    <select
+                        id="lavados"
+                        name="lavados"
+                        required>
+
+                        <option value="">
+                            Selecciona una opción
+                        </option>
+
+                        <option value="1">
+                            1 lavado
+                        </option>
+
+                        <option value="2">
+                            2 lavados
+                        </option>
+
+                        <option value="3">
+                            3 lavados
+                        </option>
+
+                        <option value="4">
+                            4 lavados
+                        </option>
+
+                        <option value="5 o más">
+                            5 o más lavados
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- BOTÓN -->
+
+                <button
+                    type="submit"
+                    class="boton-registro">
+
+                    ⭐ Crear mi registro
+
+                </button>
+
+
+            </form>
+
+
+            <!-- MENSAJE -->
+
+            <div id="mensajeFormulario"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
     <footer>
 
+        <h3>
+            TEAM CAR WASH
+        </h3>
+
         <p>
-            © 2026 Team Car Wash - Lava Autos
+            Lava. Cuida. Regresa.
         </p>
 
         <p>
             📧 teamcarwash923@gmail.com
         </p>
 
-    </footer>
+        <small>
+            © 2026 Team Car Wash - Lava Autos
+        </small>
 
+    </footer>
 
 </body>
 
 </html>
-```
