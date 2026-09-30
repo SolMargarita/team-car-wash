@@ -210,4 +210,197 @@ footer {
         text-align: center;
     }
 
+    ```css
+/* ============================= */
+/* PÁGINA DE FIDELIZACIÓN */
+/* ============================= */
+
+.fidelizacion {
+    text-align: center;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.fidelizacion > p {
+    margin-bottom: 40px;
+}
+
+
+/* TARJETA DEL CLIENTE */
+
+.cliente-card,
+.recordatorio {
+    background: white;
+    padding: 35px;
+    margin: 30px auto;
+    max-width: 700px;
+    border-radius: 15px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.1);
+}
+
+
+.progreso {
+    margin-top: 25px;
+}
+
+
+.barra {
+    width: 100%;
+    height: 20px;
+
+    background: #e5e7eb;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin-bottom: 10px;
+}
+
+
+.progreso-barra {
+    height: 100%;
+
+    background: #00a8ff;
+}
+
+
+.beneficio {
+    margin-top: 25px;
+}
+
+
+/* RECORDATORIO */
+
+.fecha {
+    font-size: 24px;
+
+    margin: 25px 0;
+}
+
+
+/* BENEFICIOS */
+
+.beneficios {
+    margin-top: 70px;
+}
+
+
+.beneficio-grid,
+.planes-grid {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+
+    margin-top: 30px;
+}
+
+
+.beneficio-card {
+
+    background: white;
+
+    width: 280px;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.1);
+}
+
+
+/* PLANES */
+
+.planes {
+    margin-top: 80px;
+}
+
+
+.plan {
+
+    background: white;
+
+    width: 300px;
+
+    padding: 35px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.1);
+}
+
+
+.plan strong {
+
+    display: block;
+
+    font-size: 24px;
+
+    color: #00a8ff;
+
+    margin: 20px 0;
+}
+
+
+.plan button {
+
+    border: none;
+
+    background: #00a8ff;
+
+    color: white;
+
+    padding: 12px 25px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+}
+
+
+.destacado {
+
+    border: 3px solid #00a8ff;
+}
+
+
+/* BOTÓN CORREO */
+
+.correo {
+
+    display: inline-block;
+
+    background: #00a8ff;
+
+    color: white;
+
+    padding: 15px 25px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    margin-top: 15px;
+}
+
+
+.correo:hover {
+
+    opacity: 0.85;
+
 }
