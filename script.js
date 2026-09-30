@@ -52,40 +52,37 @@ if (menuBtn && navLinks) {
 
 
 /* =========================================
+   GOOGLE APPS SCRIPT
+========================================= */
+
+const URL_APPS_SCRIPT =
+    "https://script.google.com/macros/s/AKfycbzgTMdUj4cSlr6B-kvCzwlLcOo_u2rY8rZeLVRg_37ydKL81Xfi5Lk9RT8lR1WeaZIozA/exec";
+
+
+/* =========================================
    FORMULARIO
 ========================================= */
 
-
-/*
-   IMPORTANTE:
-
-   Aquí debes colocar la URL de tu
-   Google Apps Script.
-
-   Ejemplo:
-
-   const URL_APPS_SCRIPT =
-   "https://script.google.com/macros/s/XXXXXXXX/exec";
-
-*/
-
-const URL_APPS_SCRIPT =
-    "https://script.google.com/macros/s/AKfycbyp_5BKG_07G-SJBZr0EZjZo2hP5SNNHF2XEr8ng2uJQuQWbDSssx678Wzb3GKtOQjXhQ/exec";
-
-
 const formulario =
-    document.getElementById("formularioCliente");
+    document.getElementById(
+        "formularioCliente"
+    );
+
 
 const mensaje =
-    document.getElementById("mensajeFormulario");
+    document.getElementById(
+        "mensajeFormulario"
+    );
+
 
 if (formulario) {
 
     formulario.addEventListener(
         "submit",
-        function (event) {
+        async function (event) {
 
             event.preventDefault();
+
 
             mensaje.innerHTML =
                 "⏳ Registrando tus datos...";
@@ -93,40 +90,74 @@ if (formulario) {
             mensaje.style.color =
                 "#008bd3";
 
+
             const datos =
                 new FormData(formulario);
 
-            fetch(URL_APPS_SCRIPT, {
-                method: "POST",
-                mode: "no-cors",
-                body: datos
-            })
-            .then(function () {
 
-                mensaje.innerHTML =
-                    "🎉 ¡Datos enviados! Estamos registrando tu información.";
+            try {
 
-                mensaje.style.color =
-                    "#008a4b";
+                const respuesta =
+                    await fetch(
+                        URL_APPS_SCRIPT,
+                        {
+                            method: "POST",
+                            body: datos
+                        }
+                    );
 
-                formulario.reset();
 
-            })
-            .catch(function (error) {
+                const resultado =
+                    await respuesta.json();
+
+
+                if (
+                    resultado.resultado ===
+                    "exito"
+                ) {
+
+                    mensaje.innerHTML =
+                        "🎉 ¡Registro exitoso! " +
+                        "Revisa tu correo. " +
+                        "¡Bienvenido a Team Car Wash! 🚗💦";
+
+
+                    mensaje.style.color =
+                        "#008a4b";
+
+
+                    formulario.reset();
+
+                }
+
+                else {
+
+                    mensaje.innerHTML =
+                        "❌ Error al registrar. " +
+                        (resultado.mensaje || "");
+
+                    mensaje.style.color =
+                        "#d93025";
+
+                }
+
+
+            }
+
+            catch (error) {
 
                 console.error(error);
 
+
                 mensaje.innerHTML =
-                    "❌ No se pudo enviar la información.";
+                    "❌ No se pudo conectar " +
+                    "con Team Car Wash.";
 
                 mensaje.style.color =
                     "#d93025";
 
-            });
+            }
 
-        }
-    );
-}
         }
     );
 
