@@ -156,19 +156,16 @@ if (formulario) {
 
 
                 /* Error */
+else {
 
-                else {
+    mensaje.innerHTML =
+        "❌ Error: " +
+        (resultado.mensaje || "No se pudo completar el registro.");
 
-                    mensaje.innerHTML =
-                        "❌ No pudimos completar " +
-                        "el registro. " +
-                        "Intenta nuevamente.";
+    mensaje.style.color =
+        "#d93025";
 
-
-                    mensaje.style.color =
-                        "#d93025";
-
-                }
+}
 
 
             }
