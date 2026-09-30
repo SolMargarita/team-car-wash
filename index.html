@@ -962,166 +962,91 @@
 
             <div class="form-card">
 
-                <form
-                    id="formularioCliente">
+                <form id="formularioCliente">
+
+    <input
+        type="text"
+        name="nombre"
+        placeholder="Tu nombre"
+        required
+    >
+
+    <input
+        type="email"
+        name="correo"
+        placeholder="Tu correo"
+        required
+    >
+
+    <select name="vehiculo" required>
+
+        <option value="">
+            Selecciona tu vehículo
+        </option>
+
+        <option value="Automóvil">
+            Automóvil
+        </option>
+
+        <option value="Camioneta">
+            Camioneta
+        </option>
+
+        <option value="Moto">
+            Moto
+        </option>
+
+        <option value="Otro">
+            Otro
+        </option>
+
+    </select>
 
 
-                    <div class="form-row">
+    <input
+        type="date"
+        name="ultimoLavado"
+        required
+    >
 
 
-                        <div class="field">
+    <select name="lavados" required>
 
-                            <label for="nombre">
-                                Nombre completo
-                            </label>
+        <option value="">
+            ¿Cuántos lavados tienes?
+        </option>
 
-                            <input
-                                type="text"
-                                id="nombre"
-                                name="nombre"
-                                placeholder="Ej. Juan Pérez"
-                                required>
+        <option value="1">
+            1 lavado
+        </option>
 
-                        </div>
+        <option value="2">
+            2 lavados
+        </option>
 
+        <option value="3">
+            3 lavados
+        </option>
 
-                        <div class="field">
+        <option value="4">
+            4 lavados
+        </option>
 
-                            <label for="correo">
-                                Correo electrónico
-                            </label>
+        <option value="5 o más">
+            5 o más lavados
+        </option>
 
-                            <input
-                                type="email"
-                                id="correo"
-                                name="correo"
-                                placeholder="Ej. juan@gmail.com"
-                                required>
-
-                        </div>
+    </select>
 
 
-                    </div>
+    <button type="submit">
+        ⭐ Crear mi registro
+    </button>
 
 
-                    <div class="form-row">
+    <div id="mensajeFormulario"></div>
 
-
-                        <div class="field">
-
-                            <label for="vehiculo">
-                                Tipo de vehículo
-                            </label>
-
-                            <select
-                                id="vehiculo"
-                                name="vehiculo"
-                                required>
-
-                                <option value="">
-                                    Selecciona
-                                </option>
-
-                                <option value="Automóvil">
-                                    🚗 Automóvil
-                                </option>
-
-                                <option value="Camioneta">
-                                    🚙 Camioneta
-                                </option>
-
-                                <option value="Moto">
-                                    🏍️ Moto
-                                </option>
-
-                                <option value="Otro">
-                                    🚘 Otro
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <div class="field">
-
-                            <label for="ultimoLavado">
-                                Fecha del último lavado
-                            </label>
-
-                            <input
-                                type="date"
-                                id="ultimoLavado"
-                                name="ultimoLavado"
-                                required>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="field">
-
-                        <label for="lavados">
-
-                            ¿Cuántos lavados
-                            has realizado?
-
-                        </label>
-
-
-                        <select
-                            id="lavados"
-                            name="lavados"
-                            required>
-
-                            <option value="">
-                                Selecciona
-                            </option>
-
-                            <option value="1">
-                                1 lavado
-                            </option>
-
-                            <option value="2">
-                                2 lavados
-                            </option>
-
-                            <option value="3">
-                                3 lavados
-                            </option>
-
-                            <option value="4">
-                                4 lavados
-                            </option>
-
-                            <option value="5 o más">
-                                5 o más lavados
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="submit-btn">
-
-                        ⭐ Crear mi registro
-
-                    </button>
-
-
-                    <div
-                        id="mensajeFormulario"
-                        class="form-message">
-
-                    </div>
-
-
-                </form>
+</form>
 
             </div>
 
