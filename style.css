@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    color: #1a1a1a;
+}
+
+
+/* NAVBAR */
+
+header {
+    background: #07111f;
+    padding: 20px 8%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h1 {
+    color: white;
+}
+
+nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: 80vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 80px 10%;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+        ),
+        url("https://images.unsplash.com/photo-1520340356584-f9917d1eea6f")
+        center/cover;
+}
+
+.hero-text {
+    max-width: 600px;
+    color: white;
+}
+
+.hero h2 {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.boton {
+    display: inline-block;
+
+    background: #00a8ff;
+    color: white;
+
+    padding: 15px 30px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+
+/* SERVICIOS */
+
+section {
+    padding: 80px 10%;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 35px;
+}
+
+.servicios {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+
+    width: 300px;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+
+    text-align: center;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+}
+
+.card p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.card strong {
+    font-size: 24px;
+    color: #0099ff;
+}
+
+
+/* NOSOTROS */
+
+.nosotros {
+    background: #07111f;
+    color: white;
+    text-align: center;
+}
+
+.nosotros p {
+    max-width: 800px;
+    margin: 15px auto;
+    line-height: 1.6;
+}
+
+
+/* CONTACTO */
+
+#contacto {
+    text-align: center;
+}
+.correo 
+{
+    display: inline-block;
+    background: #00a8ff;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.correo:hover {
+    opacity: 0.85;
+}
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #050b13;
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero h2 {
+        font-size: 38px;
+    }
+
+    .hero {
+        text-align: center;
+    }
+
+}
