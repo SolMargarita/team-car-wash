@@ -74,119 +74,59 @@ const URL_APPS_SCRIPT =
 
 
 const formulario =
-    document.getElementById(
-        "formularioCliente"
-    );
-
+    document.getElementById("formularioCliente");
 
 const mensaje =
-    document.getElementById(
-        "mensajeFormulario"
-    );
-
+    document.getElementById("mensajeFormulario");
 
 if (formulario) {
 
     formulario.addEventListener(
         "submit",
-        async function (event) {
+        function (event) {
 
             event.preventDefault();
-
-
-            /* Mensaje mientras carga */
 
             mensaje.innerHTML =
                 "⏳ Registrando tus datos...";
 
-
             mensaje.style.color =
                 "#008bd3";
-
-
-            /* Obtener información */
 
             const datos =
                 new FormData(formulario);
 
+            fetch(URL_APPS_SCRIPT, {
+                method: "POST",
+                mode: "no-cors",
+                body: datos
+            })
+            .then(function () {
 
-            try {
+                mensaje.innerHTML =
+                    "🎉 ¡Datos enviados! Estamos registrando tu información.";
 
+                mensaje.style.color =
+                    "#008a4b";
 
-                /*
-                   Enviar información
-                   a Google Apps Script
-                */
+                formulario.reset();
 
-                const respuesta =
-                    await fetch(
-                        URL_APPS_SCRIPT,
-                        {
-                            method: "POST",
-                            body: datos
-                        }
-                    );
-
-
-                const resultado =
-                    await respuesta.json();
-
-
-                /* Registro exitoso */
-
-                if (
-                    resultado.resultado ===
-                    "exito"
-                ) {
-
-                    mensaje.innerHTML =
-                        "🎉 ¡Registro exitoso! " +
-                        "Revisa tu correo. " +
-                        "¡Bienvenido a Team Car Wash! 🚗💦";
-
-
-                    mensaje.style.color =
-                        "#008a4b";
-
-
-                    formulario.reset();
-
-
-                }
-
-
-                /* Error */
-else {
-
-    mensaje.innerHTML =
-        "❌ Error: " +
-        (resultado.mensaje || "No se pudo completar el registro.");
-
-    mensaje.style.color =
-        "#d93025";
-
-}
-
-
-            }
-
-            catch (error) {
+            })
+            .catch(function (error) {
 
                 console.error(error);
 
-
                 mensaje.innerHTML =
-                    "❌ Ocurrió un problema " +
-                    "al conectar con el servidor. " +
-                    "Verifica la configuración " +
-                    "de Google Apps Script.";
-
+                    "❌ No se pudo enviar la información.";
 
                 mensaje.style.color =
                     "#d93025";
 
-            }
+            });
 
+        }
+    );
+}
         }
     );
 
