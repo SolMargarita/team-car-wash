@@ -1,49 +1,1171 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Team Car Wash | Lava Autos</title>
 
-    <link rel="stylesheet" href="style.css">
+    <meta
+        name="description"
+        content="Team Car Wash - Lava tu vehículo, acumula beneficios y disfruta de nuestro programa de fidelización.">
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <script
+        src="script.js"
+        defer>
+    </script>
+
 </head>
+
 
 <body>
 
-    <header>
-        <nav>
-            <h1>TEAM CAR WASH</h1>
 
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+    <!-- =================================
+         NAVEGACIÓN
+    ================================== -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <a
+                href="#inicio"
+                class="logo">
+
+                <span>TEAM</span>
+                CAR WASH
+
+            </a>
+
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                aria-label="Abrir menú">
+
+                ☰
+
+            </button>
+
+
+            <ul
+                class="nav-links"
+                id="navLinks">
+
+                <li>
+                    <a href="#inicio">
+                        Inicio
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#servicios">
+                        Servicios
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#fidelizacion">
+                        Fidelización
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#contacto">
+                        Contacto
+                    </a>
+                </li>
+
             </ul>
+
         </nav>
+
     </header>
 
 
+
+    <!-- =================================
+         HERO
+    ================================== -->
+
     <main>
 
-        <!-- INICIO -->
 
-        <section id="inicio" class="hero">
+        <section
+            id="inicio"
+            class="hero">
 
-            <div class="hero-text">
+            <div class="hero-overlay"></div>
 
-                <h2>Tu carro merece verse increíble.</h2>
+
+            <div class="hero-content">
+
+                <span class="hero-tag">
+                    🚗 LAVA · CUIDA · REGRESA
+                </span>
+
+
+                <h1>
+
+                    Tu carro limpio.
+
+                    <br>
+
+                    <span>
+                        Tu próximo beneficio.
+                    </span>
+
+                </h1>
+
 
                 <p>
-                    En Team Car Wash cuidamos cada detalle
-                    para que tu vehículo luzca siempre como nuevo.
+
+                    En Team Car Wash no solo lavamos
+                    tu vehículo. Creamos una relación
+                    contigo para que cada visita cuente.
+
                 </p>
 
-                <a href="#servicios" class="boton">
-                    Ver servicios
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="#servicios"
+                        class="btn btn-primary">
+
+                        Ver servicios
+
+                    </a>
+
+
+                    <a
+                        href="#fidelizacion"
+                        class="btn btn-outline">
+
+                        ⭐ Fidelización
+
+                    </a>
+
+                </div>
+
+
+                <div class="hero-stats">
+
+                    <div>
+
+                        <strong>
+                            3
+                        </strong>
+
+                        <span>
+                            servicios
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            ⭐
+                        </strong>
+
+                        <span>
+                            beneficios
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            🚗
+                        </strong>
+
+                        <span>
+                            tu vehículo
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="scroll-indicator">
+
+                ↓
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================
+             INTRO
+        ================================== -->
+
+        <section class="intro section">
+
+            <div class="section-tag">
+                TEAM CAR WASH
+            </div>
+
+
+            <h2>
+
+                Más que un lavado,
+
+                <br>
+
+                <span>
+                    una experiencia para tu vehículo.
+                </span>
+
+            </h2>
+
+
+            <p class="section-description">
+
+                Sabemos que mantener tu vehículo limpio
+                puede convertirse en una tarea más.
+                Por eso buscamos hacer el proceso sencillo,
+                agradable y memorable.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================
+             SERVICIOS
+        ================================== -->
+
+        <section
+            id="servicios"
+            class="services section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-tag">
+                        NUESTROS SERVICIOS
+                    </span>
+
+                    <h2>
+                        Elige cómo cuidar tu vehículo.
+                    </h2>
+
+                </div>
+
+
+                <p>
+
+                    Desde una limpieza rápida hasta
+                    un cuidado más completo.
+
+                </p>
+
+            </div>
+
+
+            <div class="services-grid">
+
+
+                <!-- BÁSICO -->
+
+                <article class="service-card">
+
+                    <div class="service-number">
+                        01
+                    </div>
+
+
+                    <div class="service-icon">
+                        🚗
+                    </div>
+
+
+                    <h3>
+                        Lavado Básico
+                    </h3>
+
+
+                    <p>
+
+                        Una limpieza práctica para
+                        mantener tu vehículo limpio
+                        y presentable.
+
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            ✓ Lavado exterior
+                        </li>
+
+                        <li>
+                            ✓ Limpieza de vidrios
+                        </li>
+
+                        <li>
+                            ✓ Secado
+                        </li>
+
+                    </ul>
+
+
+                    <div class="service-bottom">
+
+                        <strong>
+                            $20.000
+                        </strong>
+
+                        <span>
+                            por servicio
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PREMIUM -->
+
+                <article
+                    class="service-card featured">
+
+                    <div class="popular">
+                        MÁS ELEGIDO
+                    </div>
+
+
+                    <div class="service-number">
+                        02
+                    </div>
+
+
+                    <div class="service-icon">
+                        ✨
+                    </div>
+
+
+                    <h3>
+                        Lavado Premium
+                    </h3>
+
+
+                    <p>
+
+                        Una limpieza más completa
+                        para quienes quieren llevar
+                        su vehículo al siguiente nivel.
+
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            ✓ Lavado exterior
+                        </li>
+
+                        <li>
+                            ✓ Limpieza interior
+                        </li>
+
+                        <li>
+                            ✓ Limpieza de vidrios
+                        </li>
+
+                        <li>
+                            ✓ Secado especializado
+                        </li>
+
+                    </ul>
+
+
+                    <div class="service-bottom">
+
+                        <strong>
+                            $35.000
+                        </strong>
+
+                        <span>
+                            por servicio
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- DETALLADO -->
+
+                <article class="service-card">
+
+                    <div class="service-number">
+                        03
+                    </div>
+
+
+                    <div class="service-icon">
+                        💎
+                    </div>
+
+
+                    <h3>
+                        Detallado
+                    </h3>
+
+
+                    <p>
+
+                        Para quienes buscan una
+                        limpieza profunda y un
+                        acabado especial.
+
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            ✓ Limpieza profunda
+                        </li>
+
+                        <li>
+                            ✓ Interior detallado
+                        </li>
+
+                        <li>
+                            ✓ Exterior completo
+                        </li>
+
+                        <li>
+                            ✓ Acabado especial
+                        </li>
+
+                    </ul>
+
+
+                    <div class="service-bottom">
+
+                        <strong>
+                            $60.000
+                        </strong>
+
+                        <span>
+                            por servicio
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================
+             POR QUÉ NOSOTROS
+        ================================== -->
+
+        <section class="why section">
+
+            <div class="why-content">
+
+
+                <div class="why-text">
+
+                    <span class="section-tag">
+                        ¿POR QUÉ TEAM CAR WASH?
+                    </span>
+
+
+                    <h2>
+
+                        No queremos que seas
+                        solo una visita.
+
+                    </h2>
+
+
+                    <p>
+
+                        Queremos que cada vez que
+                        laves tu vehículo tengas una
+                        razón para volver.
+
+                    </p>
+
+
+                    <p>
+
+                        Por eso combinamos el servicio
+                        de lavado con un sistema de
+                        seguimiento y fidelización.
+
+                    </p>
+
+                </div>
+
+
+                <div class="why-grid">
+
+
+                    <div class="why-card">
+
+                        <span>
+                            ⚡
+                        </span>
+
+                        <h3>
+                            Servicio
+                        </h3>
+
+                        <p>
+                            Una experiencia sencilla
+                            y práctica.
+                        </p>
+
+                    </div>
+
+
+                    <div class="why-card">
+
+                        <span>
+                            📅
+                        </span>
+
+                        <h3>
+                            Seguimiento
+                        </h3>
+
+                        <p>
+                            Recordamos cuándo puede
+                            ser momento de volver.
+                        </p>
+
+                    </div>
+
+
+                    <div class="why-card">
+
+                        <span>
+                            ⭐
+                        </span>
+
+                        <h3>
+                            Fidelización
+                        </h3>
+
+                        <p>
+                            Cada visita puede convertirse
+                            en un beneficio.
+                        </p>
+
+                    </div>
+
+
+                    <div class="why-card">
+
+                        <span>
+                            💙
+                        </span>
+
+                        <h3>
+                            Cercanía
+                        </h3>
+
+                        <p>
+                            Construimos relaciones
+                            con nuestros clientes.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================
+             FIDELIZACIÓN
+        ================================== -->
+
+        <section
+            id="fidelizacion"
+            class="loyalty section">
+
+
+            <div class="loyalty-decoration">
+                ⭐
+            </div>
+
+
+            <div class="loyalty-content">
+
+
+                <div class="loyalty-text">
+
+                    <span class="section-tag">
+                        ⭐ PROGRAMA DE FIDELIZACIÓN
+                    </span>
+
+
+                    <h2>
+
+                        Cada lavado
+
+                        <br>
+
+                        <span>
+                            cuenta.
+                        </span>
+
+                    </h2>
+
+
+                    <p>
+
+                        Regístrate y comienza a formar
+                        parte de nuestro programa.
+                        Queremos ayudarte a recordar
+                        cuándo volver y premiar tu
+                        preferencia.
+
+                    </p>
+
+
+                    <div class="loyalty-benefits">
+
+                        <div>
+
+                            <span>
+                                📅
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Recordatorios
+                                </strong>
+
+                                <small>
+                                    No olvides tu próximo lavado.
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                🎁
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Recompensas
+                                </strong>
+
+                                <small>
+                                    Acumula visitas y beneficios.
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                💎
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Cliente frecuente
+                                </strong>
+
+                                <small>
+                                    Beneficios especiales.
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TARJETA DE PROGRESO -->
+
+                <div class="loyalty-card">
+
+
+                    <div class="loyalty-card-top">
+
+                        <span>
+                            TU PROGRESO
+                        </span>
+
+                        <strong>
+                            ⭐
+                        </strong>
+
+                    </div>
+
+
+                    <div class="car-circle">
+                        🚗
+                    </div>
+
+
+                    <h3>
+                        Tu próxima recompensa
+                    </h3>
+
+
+                    <p>
+                        Acumula tus lavados
+                        para desbloquear beneficios.
+                    </p>
+
+
+                    <div class="progress-info">
+
+                        <span>
+                            3 de 5 lavados
+                        </span>
+
+                        <strong>
+                            60%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <div
+                            style="width: 60%;">
+                        </div>
+
+                    </div>
+
+
+                    <small>
+                        Te faltan 2 lavados
+                        para tu próximo beneficio.
+                    </small>
+
+
+                    <a
+                        href="#registro"
+                        class="btn btn-primary full">
+
+                        ⭐ Unirme al programa
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================
+             CÓMO FUNCIONA
+        ================================== -->
+
+        <section class="steps section">
+
+            <div class="section-header centered">
+
+                <span class="section-tag">
+                    ASÍ DE FÁCIL
+                </span>
+
+                <h2>
+                    Tu experiencia en 4 pasos.
+                </h2>
+
+            </div>
+
+
+            <div class="steps-grid">
+
+
+                <div class="step">
+
+                    <span>
+                        01
+                    </span>
+
+                    <div>
+                        📝
+                    </div>
+
+                    <h3>
+                        Regístrate
+                    </h3>
+
+                    <p>
+                        Déjanos tus datos para
+                        comenzar tu seguimiento.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <span>
+                        02
+                    </span>
+
+                    <div>
+                        🚗
+                    </div>
+
+                    <h3>
+                        Lava tu vehículo
+                    </h3>
+
+                    <p>
+                        Elige el servicio que
+                        necesitas.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <span>
+                        03
+                    </span>
+
+                    <div>
+                        ⭐
+                    </div>
+
+                    <h3>
+                        Acumula
+                    </h3>
+
+                    <p>
+                        Tus visitas se registran
+                        en nuestro programa.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <span>
+                        04
+                    </span>
+
+                    <div>
+                        🎁
+                    </div>
+
+                    <h3>
+                        Disfruta
+                    </h3>
+
+                    <p>
+                        Obtén beneficios por
+                        continuar con nosotros.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================
+             FORMULARIO
+        ================================== -->
+
+        <section
+            id="registro"
+            class="register section">
+
+
+            <div class="register-header">
+
+                <span class="section-tag">
+                    🚗 ÚNETE A TEAM CAR WASH
+                </span>
+
+
+                <h2>
+                    Comienza tu fidelización.
+                </h2>
+
+
+                <p>
+
+                    Déjanos algunos datos y comienza
+                    a disfrutar de los beneficios
+                    de nuestro programa.
+
+                </p>
+
+            </div>
+
+
+            <div class="form-card">
+
+                <form
+                    id="formularioCliente">
+
+
+                    <div class="form-row">
+
+
+                        <div class="field">
+
+                            <label for="nombre">
+                                Nombre completo
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nombre"
+                                name="nombre"
+                                placeholder="Ej. Juan Pérez"
+                                required>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="correo">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                type="email"
+                                id="correo"
+                                name="correo"
+                                placeholder="Ej. juan@gmail.com"
+                                required>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-row">
+
+
+                        <div class="field">
+
+                            <label for="vehiculo">
+                                Tipo de vehículo
+                            </label>
+
+                            <select
+                                id="vehiculo"
+                                name="vehiculo"
+                                required>
+
+                                <option value="">
+                                    Selecciona
+                                </option>
+
+                                <option value="Automóvil">
+                                    🚗 Automóvil
+                                </option>
+
+                                <option value="Camioneta">
+                                    🚙 Camioneta
+                                </option>
+
+                                <option value="Moto">
+                                    🏍️ Moto
+                                </option>
+
+                                <option value="Otro">
+                                    🚘 Otro
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="ultimoLavado">
+                                Fecha del último lavado
+                            </label>
+
+                            <input
+                                type="date"
+                                id="ultimoLavado"
+                                name="ultimoLavado"
+                                required>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="lavados">
+
+                            ¿Cuántos lavados
+                            has realizado?
+
+                        </label>
+
+
+                        <select
+                            id="lavados"
+                            name="lavados"
+                            required>
+
+                            <option value="">
+                                Selecciona
+                            </option>
+
+                            <option value="1">
+                                1 lavado
+                            </option>
+
+                            <option value="2">
+                                2 lavados
+                            </option>
+
+                            <option value="3">
+                                3 lavados
+                            </option>
+
+                            <option value="4">
+                                4 lavados
+                            </option>
+
+                            <option value="5 o más">
+                                5 o más lavados
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="submit-btn">
+
+                        ⭐ Crear mi registro
+
+                    </button>
+
+
+                    <div
+                        id="mensajeFormulario"
+                        class="form-message">
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================
+             CONTACTO
+        ================================== -->
+
+        <section
+            id="contacto"
+            class="contact section">
+
+
+            <div class="contact-box">
+
+                <span class="section-tag">
+                    ¿TIENES ALGUNA PREGUNTA?
+                </span>
+
+
+                <h2>
+                    Hablemos.
+                </h2>
+
+
+                <p>
+
+                    Si quieres conocer más sobre nuestros
+                    servicios o el programa de fidelización,
+                    escríbenos.
+
+                </p>
+
+
+                <a
+                    href="mailto:teamcarwash923@gmail.com"
+                    class="email-btn">
+
+                    📧
+                    teamcarwash923@gmail.com
+
                 </a>
 
             </div>
@@ -51,184 +1173,75 @@
         </section>
 
 
-        <!-- SERVICIOS -->
-
-        <section id="servicios">
-
-            <h2>Nuestros servicios</h2>
-
-            <div class="servicios">
-
-                <div class="card">
-
-                    <h3>🚿 Lavado Básico</h3>
-
-                    <p>
-                        Limpieza exterior e interior
-                        para mantener tu vehículo impecable.
-                    </p>
-
-                    <strong>$20.000</strong>
-
-                </div>
+    </main>
 
 
-                <div class="card">
 
-                    <h3>✨ Lavado Premium</h3>
+    <!-- =================================
+         FOOTER
+    ================================== -->
 
-                    <p>
-                        Limpieza profunda, aspirado
-                        y cuidado especial.
-                    </p>
+    <footer>
 
-                    <strong>$35.000</strong>
-
-                </div>
-
-
-                <div class="card">
-
-                    <h3>💎 Detallado</h3>
-
-                    <p>
-                        Un servicio completo para
-                        recuperar el brillo de tu vehículo.
-                    </p>
-
-                    <strong>$60.000</strong>
-
-                </div>
-
-            </div>
-
-        </section>
-
-<!-- FIDELIZACIÓN -->
-
-<section id="fidelizacion" class="fidelizacion-inicio">
-
-    <div class="fidelizacion-contenido">
-
-        <span class="etiqueta">
-            ⭐ PROGRAMA TEAM CAR WASH
-        </span>
-
-        <h2>
-            Más que un lavado,<br>
-            una relación con nuestros clientes.
-        </h2>
-
-        <p>
-            Queremos que cada visita cuente. 
-            Con nuestro programa de fidelización podrás
-            recibir recordatorios, acumular beneficios
-            y acceder a promociones especiales.
-        </p>
-
-
-        <div class="fidelizacion-beneficios">
-
-            <div>
-                <span>📅</span>
-                <h3>Recordatorios</h3>
-                <p>
-                    Te avisamos cuando sea un buen momento
-                    para volver a lavar tu vehículo.
-                </p>
-            </div>
+        <div class="footer-content">
 
 
             <div>
-                <span>🎁</span>
-                <h3>Beneficios</h3>
+
+                <a
+                    href="#inicio"
+                    class="logo">
+
+                    <span>TEAM</span>
+                    CAR WASH
+
+                </a>
+
                 <p>
-                    Acumula lavados y desbloquea
-                    descuentos y recompensas.
+                    Lava. Cuida. Regresa.
                 </p>
+
             </div>
 
 
-            <div>
-                <span>💎</span>
-                <h3>Clientes frecuentes</h3>
-                <p>
-                    Obtén beneficios especiales por
-                    seguir confiando en nosotros.
-                </p>
+            <div class="footer-links">
+
+                <a href="#inicio">
+                    Inicio
+                </a>
+
+                <a href="#servicios">
+                    Servicios
+                </a>
+
+                <a href="#fidelizacion">
+                    Fidelización
+                </a>
+
+                <a href="#contacto">
+                    Contacto
+                </a>
+
             </div>
+
 
         </div>
 
 
-        <a href="fidelizacion.html" class="boton-fidelizacion">
-            ⭐ Conoce tu programa de fidelización
-        </a>
+        <div class="footer-bottom">
 
-    </div>
+            <span>
+                © 2026 Team Car Wash
+            </span>
 
-</section>
+            <span>
+                Lava Autos
+            </span>
 
-        <!-- NOSOTROS -->
-
-        <section id="nosotros" class="nosotros">
-
-            <h2>¿Quiénes somos?</h2>
-
-            <p>
-                Team Car Wash es un autolavado enfocado en
-                ofrecer una experiencia rápida, confiable y
-                de calidad para nuestros clientes.
-            </p>
-
-            <p>
-                Además, buscamos crear relaciones duraderas
-                con nuestros clientes mediante promociones,
-                beneficios y programas de fidelización.
-            </p>
-
-        </section>
-
-
-        <!-- CONTACTO -->
-
-        <section id="contacto">
-
-            <h2>Contáctanos</h2>
-
-            <p>
-                ¿Quieres lavar tu vehículo?
-            </p>
-
-            <a
-                href="mailto:teamcarwash923@gmail.com"
-                class="correo">
-                📧 Escríbenos por correo
-            </a>
-
-            <p>
-                <br>
-                📩 teamcarwash923@gmail.com
-            </p>
-
-        </section>
-
-    </main>
-
-
-    <!-- PIE DE PÁGINA -->
-
-    <footer>
-
-        <p>
-            © 2026 Team Car Wash - Lava Autos
-        </p>
-
-        <p>
-            📧 teamcarwash923@gmail.com
-        </p>
+        </div>
 
     </footer>
+
 
 </body>
 
