@@ -56,6 +56,18 @@ if (menuBtn && navLinks) {
 ========================================= */
 
 
+/*
+   IMPORTANTE:
+
+   Aquí debes colocar la URL de tu
+   Google Apps Script.
+
+   Ejemplo:
+
+   const URL_APPS_SCRIPT =
+   "https://script.google.com/macros/s/XXXXXXXX/exec";
+
+*/
 
 const URL_APPS_SCRIPT =
     "https://script.google.com/macros/s/AKfycbyp_5BKG_07G-SJBZr0EZjZo2hP5SNNHF2XEr8ng2uJQuQWbDSssx678Wzb3GKtOQjXhQ/exec";
@@ -63,7 +75,7 @@ const URL_APPS_SCRIPT =
 
 const formulario =
     document.getElementById(
-        "Clientes"
+        "formularioCliente"
     );
 
 
