@@ -403,4 +403,121 @@ footer {
 
     opacity: 0.85;
 
+    ```css
+/* ============================= */
+/* FORMULARIO DE FIDELIZACIÓN */
+/* ============================= */
+
+.registro {
+
+    max-width: 700px;
+
+    margin: 80px auto;
+
+    background: white;
+
+    padding: 45px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,0.1);
+
+    text-align: center;
+
+}
+
+
+.registro h2 {
+
+    margin-bottom: 15px;
+
+}
+
+
+.registro > p {
+
+    margin-bottom: 35px;
+
+    line-height: 1.5;
+
+}
+
+
+.campo {
+
+    text-align: left;
+
+    margin-bottom: 20px;
+
+}
+
+
+.campo label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: bold;
+
+}
+
+
+.campo input,
+.campo select {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+}
+
+
+.registro button {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #00a8ff;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+
+}
+
+
+.registro button:hover {
+
+    opacity: 0.85;
+
+}
+
+
+#mensajeFormulario {
+
+    margin-top: 25px;
+
+    font-weight: bold;
+
+
+
 }
