@@ -1,935 +1,1079 @@
-<!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoSpark | Autolavado Inteligente & Fidelización</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#f0f7ff',
-                            100: '#e0effe',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            900: '#0c4a6e',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(229, 231, 235, 0.8);
-        }
-        .custom-gradient {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0369a1 100%);
-        }
-        .toast-enter {
-            animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        @keyframes slideIn {
-            from { transform: translateY(100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-    </style>
-</head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
-
-    <!-- TOP VIEW SWITCHER BAR (Para facilitar la navegación entre los 3 módulos) -->
-    <div class="bg-slate-950 text-slate-300 py-2 px-4 border-b border-slate-800 text-xs">
-        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-            <span class="font-bold text-sky-400 flex items-center gap-1.5">
-                <i class="fa-solid fa-layer-group"></i> Selector de Vistas del Sistema:
-            </span>
-            <div class="flex items-center gap-2">
-                <button onclick="switchTab('main')" id="tab-btn-main" class="px-3 py-1.5 rounded-lg bg-sky-600 text-white font-bold transition-all hover:opacity-90">
-                    1. Sitio Web Lavadero
-                </button>
-                <button onclick="switchTab('frecuente')" id="tab-btn-frecuente" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition-all">
-                    2. Portal Cliente VIP
-                </button>
-                <button onclick="switchTab('admin')" id="tab-btn-admin" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition-all">
-                    3. Panel del Dueño
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MAIN HEADER NAVBAR -->
-    <header class="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md text-white border-b border-slate-800 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Brand Logo -->
-            <a href="#" onclick="switchTab('main')" class="flex items-center gap-3 group">
-                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-sky-500 to-blue-600 flex items-center justify-center text-white text-xl shadow-lg shadow-sky-500/30 group-hover:scale-105 transition-transform">
-                    <i class="fa-solid font-bold fa-car-wash"></i>
-                </div>
-                <div>
-                    <span class="font-extrabold text-xl tracking-tight text-white block leading-none">AutoSpark</span>
-                    <span class="text-xs font-medium text-sky-400 tracking-wider uppercase">Smart Wash & Care</span>
-                </div>
-            </a>
-
-            <!-- Navigation Links for Main Site -->
-            <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
-                <button onclick="switchTab('main')" class="px-3 py-2 text-sm font-semibold rounded-lg hover:bg-slate-800 text-slate-200 transition-colors">Inicio</button>
-                <a href="#nosotros" onclick="switchTab('main')" class="px-3 py-2 text-sm font-semibold rounded-lg hover:bg-slate-800 text-slate-300 transition-colors">Nosotros</a>
-                <a href="#servicios" onclick="switchTab('main')" class="px-3 py-2 text-sm font-semibold rounded-lg hover:bg-slate-800 text-slate-300 transition-colors">Servicios</a>
-                <a href="#registro" onclick="switchTab('main')" class="px-3 py-2 text-sm font-semibold rounded-lg hover:bg-slate-800 text-slate-300 transition-colors">Cuestionario & Recordatorios</a>
-            </nav>
-
-            <!-- Action Buttons for Portals -->
-            <div class="flex items-center gap-2">
-                <button onclick="switchTab('frecuente')" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold px-3 sm:px-4 py-2.5 rounded-xl transition-all shadow-md flex items-center gap-2 border border-emerald-400/30">
-                    <i class="fa-solid fa-star text-amber-300"></i>
-                    <span>Mis Puntos VIP</span>
-                </button>
-                <button onclick="switchTab('admin')" class="bg-slate-800 hover:bg-slate-700 text-sky-400 text-xs sm:text-sm font-bold px-3 sm:px-4 py-2.5 rounded-xl border border-slate-700 transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-chart-line"></i>
-                    <span class="hidden sm:inline">Panel Dueño</span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- MAIN CONTENT AREA -->
-    <main class="flex-grow">
-
-        <!-- ========================================== -->
-        <!-- VISTA 1: SITIO WEB PRINCIPAL DEL LAVADERO -->
-        <!-- ========================================== -->
-        <div id="view-main" class="space-y-16 pb-16">
-            
-            <!-- Hero Banner -->
-            <section class="relative custom-gradient text-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-                <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]"></div>
-                
-                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-300 text-xs sm:text-sm font-semibold">
-                            <i class="fa-solid fa-bell text-amber-400"></i> Sistema de Recordatorios de Lavado Automáticos
-                        </div>
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-                            Tu auto impecable, <br class="hidden sm:inline">
-                            <span class="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">sin tener que recordarlo.</span>
-                        </h1>
-                        <p class="text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0">
-                            Transformamos la limpieza esporádica en un hábito sin estrés. Recibe avisos por WhatsApp justo cuando tu vehículo necesita mantenimiento y acumula lavados gratis.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
-                            <a href="#registro" class="bg-sky-500 hover:bg-sky-400 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-sky-500/30 transition-all text-center flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-clipboard-check"></i> Llenar Cuestionario & Activar
-                            </a>
-                            <button onclick="switchTab('frecuente')" class="bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold px-6 py-4 rounded-xl transition-all text-center flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-crown text-amber-400"></i> Soy Cliente Frecuente
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Visual Graphic Card -->
-                    <div class="lg:col-span-5 flex justify-center">
-                        <div class="w-full max-w-md glass-panel bg-slate-900/80 border border-slate-700/60 p-6 rounded-3xl shadow-2xl relative text-slate-100">
-                            <div class="flex items-center justify-between border-b border-slate-700/80 pb-4 mb-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
-                                        <i class="fa-brands fa-whatsapp text-xl"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold text-sm">Notificación Inteligente</h4>
-                                        <span class="text-xs text-slate-400">AutoSpark Recordatorio</span>
-                                    </div>
-                                </div>
-                                <span class="text-xs bg-slate-800 text-slate-400 px-2 py-1 rounded">Hoy</span>
-                            </div>
-                            <div class="bg-slate-800/90 p-4 rounded-2xl text-sm border border-slate-700 leading-relaxed mb-4">
-                                "Hola Juan 👋, han pasado 15 días desde tu último lavado. El pronóstico estará soleado esta semana ☀️. ¿Te agendamos un turno prioritario para hoy?"
-                            </div>
-                            <div class="flex items-center justify-between text-xs text-slate-400 px-1">
-                                <span><i class="fa-solid fa-check-double text-sky-400"></i> Recordatorio Oportuno</span>
-                                <span class="text-emerald-400 font-semibold">Reserva en 1 Clic</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECCIÓN 1: NOSOTROS -->
-            <section id="nosotros" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-                <div class="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-xl border border-slate-800">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <span class="text-sky-400 font-bold text-xs uppercase tracking-wider bg-sky-950/80 border border-sky-800/50 px-3 py-1 rounded-full">Sobre Nosotros</span>
-                            <h2 class="text-3xl sm:text-4xl font-extrabold mt-4 mb-6">Reinventamos el servicio de lavadero con tecnología de seguimiento.</h2>
-                            <p class="text-slate-300 leading-relaxed mb-4">
-                                Entendemos la rutina diaria: no dejas de lavar tu vehículo por desinterés, sino porque las ocupaciones hacen que olvides cuándo fue la última vez que le diste mantenimiento.
-                            </p>
-                            <p class="text-slate-300 leading-relaxed mb-6">
-                                En **AutoSpark**, combinamos la mejor técnica de limpieza profunda con **un sistema inteligente de recordatorios periódicos**. Calculamos el ciclo óptimo según el uso de tu auto y te avisamos vía WhatsApp antes de que la suciedad acumule daños en la pintura.
-                            </p>
-                            <div class="grid grid-cols-2 gap-4 pt-2">
-                                <div class="border-l-4 border-sky-500 pl-4">
-                                    <p class="text-2xl font-black text-white">+1,500</p>
-                                    <p class="text-xs text-slate-400">Autos en programa de cuidado</p>
-                                </div>
-                                <div class="border-l-4 border-emerald-500 pl-4">
-                                    <p class="text-2xl font-black text-white">95%</p>
-                                    <p class="text-xs text-slate-400">Clientes recurrentes sin olvidos</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700">
-                                <i class="fa-solid fa-clock-rotate-left text-3xl text-sky-400 mb-3"></i>
-                                <h4 class="font-bold mb-1 text-sm">Sin Olvidos</h4>
-                                <p class="text-xs text-slate-400">Avisos automáticos en el momento justo que tu auto lo requiere.</p>
-                            </div>
-                            <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700">
-                                <i class="fa-solid fa-gift text-3xl text-emerald-400 mb-3"></i>
-                                <h4 class="font-bold mb-1 text-sm">Beneficios VIP</h4>
-                                <p class="text-xs text-slate-400">Acumula lavados y obtén encerados y servicios de regalo.</p>
-                            </div>
-                            <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700">
-                                <i class="fa-solid fa-bolt text-3xl text-amber-400 mb-3"></i>
-                                <h4 class="font-bold mb-1 text-sm">Turno Prioritario</h4>
-                                <p class="text-xs text-slate-400">Reserva tu horario preferido directo desde tus mensajes.</p>
-                            </div>
-                            <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700">
-                                <i class="fa-solid fa-shield-halved text-3xl text-blue-400 mb-3"></i>
-                                <h4 class="font-bold mb-1 text-sm">Protección Activa</h4>
-                                <p class="text-xs text-slate-400">Mantenimiento constante que protege el valor de reventa.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECCIÓN 2: SERVICIOS DE LAVADO -->
-            <section id="servicios" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <h2 class="text-xs font-extrabold uppercase tracking-widest text-sky-600 mb-2">Servicios Disponibles</h2>
-                    <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Planes de Limpieza & Mantenimiento</h3>
-                    <p class="text-slate-600 mt-3">Escoge la rutina que mejor se adapte al uso diario de tu vehículo.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Servicio 1 -->
-                    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
-                        <div>
-                            <div class="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl mb-6">
-                                <i class="fa-solid fa-shower"></i>
-                            </div>
-                            <h4 class="text-xl font-bold text-slate-900">Lavado Express</h4>
-                            <p class="text-slate-500 text-sm mt-2">Mantenimiento rápido semanal para remover polvo y suciedad ligera.</p>
-                            <div class="my-6">
-                                <span class="text-4xl font-extrabold text-slate-900">$12</span>
-                                <span class="text-slate-400 text-sm">/ servicio</span>
-                            </div>
-                            <ul class="space-y-3 text-sm text-slate-600 mb-8">
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-sky-500"></i> Lavado exterior con champú pH neutro</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-sky-500"></i> Secado a mano con microfibra</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-sky-500"></i> Limpieza superficial de rines</li>
-                            </ul>
-                        </div>
-                        <a href="#registro" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-3 rounded-xl transition-colors text-center block">Registrarme & Probar</a>
-                    </div>
-
-                    <!-- Servicio 2 (Destacado) -->
-                    <div class="bg-gradient-to-b from-slate-900 to-slate-800 text-white rounded-3xl p-8 border-2 border-sky-500 shadow-2xl relative flex flex-col justify-between transform md:-translate-y-3">
-                        <div class="absolute -top-4 right-8 bg-gradient-to-r from-sky-500 to-emerald-400 text-slate-950 font-extrabold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md">
-                            Recomendado
-                        </div>
-                        <div>
-                            <div class="w-12 h-12 rounded-2xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-2xl mb-6 border border-sky-400/30">
-                                <i class="fa-solid fa-sparkles"></i>
-                            </div>
-                            <h4 class="text-xl font-bold text-white">Lavado Integral Premium</h4>
-                            <p class="text-slate-300 text-sm mt-2">Atención completa por dentro y fuera. Aroma fresco e interiores limpios.</p>
-                            <div class="my-6">
-                                <span class="text-4xl font-extrabold text-white">$25</span>
-                                <span class="text-slate-400 text-sm">/ servicio</span>
-                            </div>
-                            <ul class="space-y-3 text-sm text-slate-300 mb-8">
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> Carrocería + Aspirado profundo</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> Limpieza e hidratación de tablero</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> Encerado express protector de rayos UV</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> Renovador de llantas y rines pulidos</li>
-                            </ul>
-                        </div>
-                        <a href="#registro" class="w-full bg-sky-500 hover:bg-sky-400 text-white font-bold py-3.5 rounded-xl shadow-lg transition-colors text-center block">Agendar & Registrarme</a>
-                    </div>
-
-                    <!-- Servicio 3 -->
-                    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
-                        <div>
-                            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl mb-6">
-                                <i class="fa-solid fa-shield-halved"></i>
-                            </div>
-                            <h4 class="text-xl font-bold text-slate-900">Detailing Cerámico</h4>
-                            <p class="text-slate-500 text-sm mt-2">Tratamiento especializado para restaurar brillo y repeler el agua.</p>
-                            <div class="my-6">
-                                <span class="text-4xl font-extrabold text-slate-900">$60</span>
-                                <span class="text-slate-400 text-sm">/ tratamiento</span>
-                            </div>
-                            <ul class="space-y-3 text-sm text-slate-600 mb-8">
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i> Descontaminado de pintura</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i> Sellador sintético hidrofóbico</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i> Limpieza a vapor de tapicería</li>
-                            </ul>
-                        </div>
-                        <a href="#registro" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-3 rounded-xl transition-colors text-center block">Registrarme & Probar</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECCIÓN 3: CUESTIONARIO Y REGISTRO DE DATOS PARA RECORDATORIOS -->
-            <section id="registro" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-                <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl">
-                    <div class="text-center max-w-xl mx-auto mb-8">
-                        <div class="w-14 h-14 bg-sky-100 text-sky-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3">
-                            <i class="fa-solid fa-clipboard-list"></i>
-                        </div>
-                        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Cuestionario de Mantenimiento</h3>
-                        <p class="text-slate-500 text-sm mt-2">Déjanos tus datos para calcular la fecha ideal de tu próximo lavado y programar tus recordatorios automáticos.</p>
-                    </div>
-
-                    <form id="reminder-form" onsubmit="handleRegisterClient(event)" class="space-y-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <!-- Nombre -->
-                            <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Nombre Completo *</label>
-                                <div class="relative">
-                                    <i class="fa-solid fa-user absolute left-4 top-3.5 text-slate-400"></i>
-                                    <input type="text" id="client-name" required placeholder="Ej. Juan Pérez" class="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 outline-none text-slate-800 text-sm font-medium transition-all">
-                                </div>
-                            </div>
-
-                            <!-- Teléfono -->
-                            <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Teléfono WhatsApp *</label>
-                                <div class="relative">
-                                    <i class="fa-brands fa-whatsapp absolute left-4 top-3.5 text-slate-400"></i>
-                                    <input type="tel" id="client-phone" required placeholder="Ej. 3001234567" class="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 outline-none text-slate-800 text-sm font-medium transition-all">
-                                </div>
-                            </div>
-
-                            <!-- Última fecha de lavado -->
-                            <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">¿Cuándo lavaste el auto por última vez? *</label>
-                                <div class="relative">
-                                    <i class="fa-solid fa-calendar-day absolute left-4 top-3.5 text-slate-400"></i>
-                                    <input type="date" id="client-last-wash" required class="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 outline-none text-slate-800 text-sm font-medium transition-all">
-                                </div>
-                            </div>
-
-                            <!-- Tipo de Vehículo -->
-                            <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Tipo de Vehículo</label>
-                                <div class="relative">
-                                    <i class="fa-solid fa-car absolute left-4 top-3.5 text-slate-400"></i>
-                                    <select id="client-vehicle" class="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 outline-none text-slate-800 text-sm font-medium transition-all appearance-none bg-white">
-                                        <option value="Sedán / Automóvil">Sedán / Automóvil</option>
-                                        <option value="Camioneta / SUV">Camioneta / SUV</option>
-                                        <option value="Pickup / 4x4">Pickup / 4x4</option>
-                                        <option value="Motocicleta">Motocicleta</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Frecuencia deseada -->
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">¿Cada cuánto prefieres lavar tu auto?</label>
-                            <div class="grid grid-cols-3 gap-3">
-                                <label class="cursor-pointer border rounded-xl p-3 text-center transition-all hover:border-sky-500 flex flex-col items-center gap-1 has-[:checked]:bg-sky-50 has-[:checked]:border-sky-500 has-[:checked]:text-sky-700">
-                                    <input type="radio" name="freq" value="10" class="sr-only">
-                                    <span class="font-bold text-sm">Cada 10 días</span>
-                                    <span class="text-xs text-slate-500">Uso frecuente</span>
-                                </label>
-                                <label class="cursor-pointer border rounded-xl p-3 text-center transition-all hover:border-sky-500 flex flex-col items-center gap-1 has-[:checked]:bg-sky-50 has-[:checked]:border-sky-500 has-[:checked]:text-sky-700">
-                                    <input type="radio" name="freq" value="15" class="sr-only" checked>
-                                    <span class="font-bold text-sm">Cada 15 días</span>
-                                    <span class="text-xs text-slate-500">Recomendado</span>
-                                </label>
-                                <label class="cursor-pointer border rounded-xl p-3 text-center transition-all hover:border-sky-500 flex flex-col items-center gap-1 has-[:checked]:bg-sky-50 has-[:checked]:border-sky-500 has-[:checked]:text-sky-700">
-                                    <input type="radio" name="freq" value="30" class="sr-only">
-                                    <span class="font-bold text-sm">Cada 30 días</span>
-                                    <span class="text-xs text-slate-500">Ocasional</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-4 rounded-xl shadow-lg shadow-emerald-600/30 transition-all text-center flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-paper-plane"></i> Guardar Mis Datos y Activar Recordatorio
-                        </button>
-                    </form>
-
-                    <!-- Mensaje de Confirmación Instantáneo -->
-                    <div id="registration-result" class="hidden mt-6 p-6 bg-emerald-50 border border-emerald-200 rounded-2xl text-emerald-900">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center flex-shrink-0 text-xl">
-                                <i class="fa-solid fa-check"></i>
-                            </div>
-                            <div class="space-y-1">
-                                <h4 class="font-bold text-base">¡Registro completado exitosamente!</h4>
-                                <p id="result-text" class="text-sm text-emerald-800 leading-relaxed"></p>
-                                <div class="pt-3 flex gap-3">
-                                    <button onclick="switchTab('frecuente')" class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold px-4 py-2 rounded-lg">Ir a Mi Portal de Puntos</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- ==================================================== -->
-        <!-- VISTA 2: PORTAL DE CLIENTE FRECUENTE & RECOMENDACIÓN -->
-        <!-- ==================================================== -->
-        <div id="view-frecuente" class="hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-lg">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-100 pb-6">
-                    <div>
-                        <span class="inline-block px-3 py-1 bg-amber-100 text-amber-800 font-bold text-xs rounded-full mb-2">
-                            <i class="fa-solid fa-crown text-amber-500"></i> Club VIP de Clientes
-                        </span>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Tu Progreso de Fidelización</h2>
-                        <p class="text-slate-500 text-sm">Consulta tus puntos, beneficios gratis y recomendaciones de lavado.</p>
-                    </div>
-
-                    <!-- Buscador de cliente por teléfono -->
-                    <div class="flex items-center gap-2 bg-slate-50 p-2 rounded-2xl border border-slate-200">
-                        <input type="tel" id="portal-search-phone" placeholder="Ingresa tu teléfono" class="px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-sky-500">
-                        <button onclick="searchClientPortal()" class="bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all">Buscar</button>
-                    </div>
-                </div>
-
-                <!-- Tarjeta Dinámica de Fidelización -->
-                <div id="loyalty-card-container" class="mt-8 space-y-8">
-                    <!-- Cargado dinámicamente mediante JS -->
-                </div>
-            </div>
-
-            <!-- Consejos de Mantenimiento y Clima -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-gradient-to-br from-sky-900 to-slate-900 text-white p-6 rounded-3xl shadow-md border border-slate-800">
-                    <div class="flex items-center gap-3 text-sky-400 mb-3">
-                        <i class="fa-solid fa-lightbulb text-xl"></i>
-                        <h4 class="font-bold text-base">Consejo de Mantenimiento</h4>
-                    </div>
-                    <p class="text-sm text-slate-300 leading-relaxed">
-                        Lavar tu vehículo cada 15 días previene que los desechos orgánicos y minerales desgasten el brillo del barniz. ¡Cuesta un 80% menos prevenir que pulir la pintura!
-                    </p>
-                </div>
-
-                <div class="bg-gradient-to-br from-emerald-900 to-slate-900 text-white p-6 rounded-3xl shadow-md border border-slate-800">
-                    <div class="flex items-center gap-3 text-emerald-400 mb-3">
-                        <i class="fa-solid fa-cloud-sun text-xl"></i>
-                        <h4 class="font-bold text-base">Pronóstico Recomendado</h4>
-                    </div>
-                    <p class="text-sm text-slate-300 leading-relaxed">
-                        Se proyecta clima soleado en los próximos días. Es el momento perfecto para agendar un lavado integral con capa protectora contra la radiación UV.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========================================================== -->
-        <!-- VISTA 3: PANEL DE CONTROL DEL DUEÑO (DASHBOARD & TABLA)    -->
-        <!-- ========================================================== -->
-        <div id="view-admin" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div>
-                    <span class="inline-block px-3 py-1 bg-sky-100 text-sky-800 font-bold text-xs rounded-full mb-1">Módulo del Administrador</span>
-                    <h2 class="text-3xl font-extrabold text-slate-900">Panel de Control & Recordatorios</h2>
-                    <p class="text-slate-500 text-sm">Gestiona la base de clientes, consulta estadísticas y envía recordatorios por WhatsApp.</p>
-                </div>
-                
-                <button onclick="addNewMockClient()" class="bg-sky-600 hover:bg-sky-500 text-white font-bold text-sm px-4 py-2.5 rounded-xl shadow transition-all self-start flex items-center gap-2">
-                    <i class="fa-solid fa-plus"></i> Agregar Cliente Ejemplo
-                </button>
-            </div>
-
-            <!-- Métrica Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
-                    <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Clientes Registrados</p>
-                        <h4 id="stat-total-clients" class="text-3xl font-black text-slate-900 mt-1">0</h4>
-                        <span class="text-xs text-emerald-600 font-semibold"><i class="fa-solid fa-arrow-up"></i> Base de datos activa</span>
-                    </div>
-                    <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl">
-                        <i class="fa-solid fa-users"></i>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
-                    <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Requieren Recordatorio</p>
-                        <h4 id="stat-pending-reminders" class="text-3xl font-black text-amber-600 mt-1">0</h4>
-                        <span class="text-xs text-amber-600 font-semibold"><i class="fa-solid fa-bell"></i> Listos para contactar</span>
-                    </div>
-                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl">
-                        <i class="fa-solid fa-clock"></i>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
-                    <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Servicios este Mes</p>
-                        <h4 id="stat-month-washes" class="text-3xl font-black text-emerald-600 mt-1">48</h4>
-                        <span class="text-xs text-emerald-600 font-semibold"><i class="fa-solid fa-chart-line"></i> Demanda estable</span>
-                    </div>
-                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl">
-                        <i class="fa-solid fa-car-side"></i>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
-                    <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Tasa de Retención</p>
-                        <h4 class="text-3xl font-black text-purple-600 mt-1">91%</h4>
-                        <span class="text-xs text-purple-600 font-semibold"><i class="fa-solid fa-rotate-right"></i> Retorno frecuente</span>
-                    </div>
-                    <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl">
-                        <i class="fa-solid fa-arrows-rotate"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tabla de Clientes y Estado de Recordatorio -->
-            <div class="bg-white rounded-3xl border border-slate-200 shadow-lg overflow-hidden">
-                <div class="p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <h3 class="text-lg font-bold text-slate-900">Directorio de Clientes & Estado de Mantenimiento</h3>
-                    <div class="flex items-center gap-3">
-                        <input type="text" id="admin-search-input" onkeyup="renderAdminTable()" placeholder="Buscar cliente o teléfono..." class="px-4 py-2 border border-slate-300 rounded-xl text-sm outline-none focus:ring-2 focus:ring-sky-500">
-                    </div>
-                </div>
-
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-slate-50 text-slate-500 text-xs font-bold uppercase border-b border-slate-200">
-                                <th class="p-4">Cliente / Vehículo</th>
-                                <th class="p-4">Último Lavado</th>
-                                <th class="p-4">Días Transcurridos</th>
-                                <th class="p-4">Frecuencia</th>
-                                <th class="p-4">Visitas</th>
-                                <th class="p-4 text-center">Acción de Recordatorio</th>
-                            </tr>
-                        </thead>
-                        <tbody id="admin-clients-table" class="divide-y divide-slate-100 text-sm">
-                            <!-- Filas generadas dinámicamente -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- MODAL PARA AGENDAR CITA -->
-        <div id="appointment-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-            <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-5 border border-slate-100">
-                <div class="flex justify-between items-center border-b pb-3">
-                    <h3 class="font-extrabold text-lg text-slate-900 flex items-center gap-2">
-                        <i class="fa-solid fa-calendar-plus text-sky-600"></i> Agendar Cita de Lavado
-                    </h3>
-                    <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
-                </div>
-
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Cliente</label>
-                        <input type="text" id="modal-client-name" readonly class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-700">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Fecha Deseada</label>
-                        <input type="date" id="modal-booking-date" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm font-medium">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Hora Pretendida</label>
-                        <select id="modal-booking-time" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm font-medium">
-                            <option value="08:00 AM">08:00 AM</option>
-                            <option value="10:00 AM">10:00 AM</option>
-                            <option value="02:00 PM">02:00 PM</option>
-                            <option value="04:00 PM">04:00 PM</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Servicio</label>
-                        <select id="modal-service-type" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm font-medium">
-                            <option value="Lavado Express">Lavado Express ($12)</option>
-                            <option value="Lavado Integral Premium">Lavado Integral Premium ($25)</option>
-                            <option value="Detailing Cerámico">Detailing Cerámico ($60)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="flex gap-3 pt-2">
-                    <button onclick="closeModal()" class="w-1/2 py-3 border border-slate-300 rounded-xl font-bold text-slate-600 hover:bg-slate-50 text-sm">Cancelar</button>
-                    <button onclick="confirmAppointment()" class="w-1/2 py-3 bg-sky-600 hover:bg-sky-500 text-white rounded-xl font-bold text-sm shadow-md">Confirmar Cita</button>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-12">
-        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
-            <p class="font-bold text-slate-200">AutoSpark - Sistema Inteligente de Recordatorios & Fidelización de Autolavados</p>
-            <p>Solución diseñada para convertir el lavado ocasional en un hábito recurrente y mantener una demanda predecible.</p>
-        </div>
-    </footer>
-
-    <!-- NOTIFICACIÓN TOAST -->
-    <div id="toast" class="hidden fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-700 toast-enter">
-        <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
-        <span id="toast-message" class="text-sm font-medium">Operación realizada</span>
-    </div>
-
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        // Base de Datos Inicial de Ejemplo
-        let clientsDB = [
-            {
-                id: '1',
-                name: 'Carlos Mendoza',
-                phone: '3001234567',
-                vehicle: 'Sedán / Mazda 3',
-                lastWashDate: '2026-09-18', // ~17 días
-                frequencyDays: 15,
-                washesCount: 4
-            },
-            {
-                id: '2',
-                name: 'María Fernández',
-                phone: '3159876543',
-                vehicle: 'Camioneta / Toyota RAV4',
-                lastWashDate: '2026-10-01', // ~4 días
-                frequencyDays: 10,
-                washesCount: 2
-            },
-            {
-                id: '3',
-                name: 'Andrés Gómez',
-                phone: '3205558899',
-                vehicle: 'Pickup / Ford Ranger',
-                lastWashDate: '2026-08-25', // Vencido
-                frequencyDays: 30,
-                washesCount: 5
-            }
-        ];
-
-        let selectedClientForModal = null;
-
-        window.onload = function() {
-            // Establecer la fecha actual por defecto en el selector
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('client-last-wash').value = today;
-            
-            // Inicializar vistas
-            renderAdminTable();
-            updateStats();
-            searchClientPortal('3001234567');
-        };
-
-        // Función para calcular días desde la última fecha
-        function calculateDaysSince(dateString) {
-            const washDate = new Date(dateString);
-            const today = new Date();
-            const diffTime = Math.abs(today - washDate);
-            return Math.floor(diffTime / (1000 * 60 * 60 * 24));
-        }
-
-        // Formatear fechas
-        function formatDate(dateString) {
-            const options = { year: 'numeric', month: 'short', day: 'numeric' };
-            return new Date(dateString).toLocaleDateString('es-ES', options);
-        }
-
-        // Alternar entre las 3 vistas principales
-        function switchTab(tabName) {
-            document.getElementById('view-main').classList.add('hidden');
-            document.getElementById('view-frecuente').classList.add('hidden');
-            document.getElementById('view-admin').classList.add('hidden');
-
-            // Resetear estilos de botones superiores
-            ['main', 'frecuente', 'admin'].forEach(t => {
-                const btn = document.getElementById(`tab-btn-${t}`);
-                if(btn) {
-                    btn.className = "px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition-all";
-                }
-            });
-
-            if(tabName === 'main') {
-                document.getElementById('view-main').classList.remove('hidden');
-                document.getElementById('tab-btn-main').className = "px-3 py-1.5 rounded-lg bg-sky-600 text-white font-bold transition-all";
-            } else if(tabName === 'frecuente') {
-                document.getElementById('view-frecuente').classList.remove('hidden');
-                document.getElementById('tab-btn-frecuente').className = "px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-bold transition-all";
-            } else if(tabName === 'admin') {
-                document.getElementById('view-admin').classList.remove('hidden');
-                document.getElementById('tab-btn-admin').className = "px-3 py-1.5 rounded-lg bg-sky-600 text-white font-bold transition-all";
-                renderAdminTable();
-                updateStats();
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Procesar formulario del cuestionario
-        function handleRegisterClient(event) {
-            event.preventDefault();
-
-            const name = document.getElementById('client-name').value.trim();
-            const phone = document.getElementById('client-phone').value.trim();
-            const lastWashDate = document.getElementById('client-last-wash').value;
-            const vehicle = document.getElementById('client-vehicle').value;
-            const frequencyDays = parseInt(document.querySelector('input[name="freq"]:checked').value);
-
-            let existing = clientsDB.find(c => c.phone === phone);
-            if(existing) {
-                existing.name = name;
-                existing.lastWashDate = lastWashDate;
-                existing.vehicle = vehicle;
-                existing.frequencyDays = frequencyDays;
-            } else {
-                clientsDB.push({
-                    id: Date.now().toString(),
-                    name,
-                    phone,
-                    vehicle,
-                    lastWashDate,
-                    frequencyDays,
-                    washesCount: 1
-                });
-            }
-
-            const daysAgo = calculateDaysSince(lastWashDate);
-            const nextSuggestedDate = new Date();
-            nextSuggestedDate.setDate(nextSuggestedDate.getDate() + (frequencyDays - daysAgo));
-
-            const resultBox = document.getElementById('registration-result');
-            const resultText = document.getElementById('result-text');
-            resultText.innerHTML = `¡Hola <strong>${name}</strong>! Hemos registrado tu preferencia de lavado cada <strong>${frequencyDays} días</strong>. Basado en tu último lavado (${formatDate(lastWashDate)}), tu próximo momento recomendado será el <strong>${formatDate(nextSuggestedDate)}</strong>. Te enviaremos un recordatorio por WhatsApp.`;
-            resultBox.classList.remove('hidden');
-
-            showToast("¡Tus datos fueron guardados y recordatorios activados!");
-            searchClientPortal(phone);
-        }
-
-        // Renderizar tabla del panel de control del dueño
-        function renderAdminTable() {
-            const tbody = document.getElementById('admin-clients-table');
-            const filterText = document.getElementById('admin-search-input').value.toLowerCase();
-            tbody.innerHTML = '';
-
-            const filtered = clientsDB.filter(c => 
-                c.name.toLowerCase().includes(filterText) || c.phone.includes(filterText)
-            );
-
-            if(filtered.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-slate-400">No hay clientes registrados en este momento.</td></tr>`;
-                return;
-            }
-
-            filtered.forEach(client => {
-                const days = calculateDaysSince(client.lastWashDate);
-                const isOverdue = days >= client.frequencyDays;
-
-                // Enlace directo de WhatsApp con mensaje personalizado prediseñado
-                const message = encodeURIComponent(`Hola ${client.name} 👋, te saludamos de AutoSpark 🚗. Han transcurrido ${days} días desde tu último lavado. ¿Te reservamos un turno para esta semana y mantenemos tu auto impecable?`);
-                const waLink = `https://wa.me/${client.phone.replace(/[^0-9]/g, '')}?text=${message}`;
-
-                const row = document.createElement('tr');
-                row.className = 'hover:bg-slate-50 transition-colors';
-                row.innerHTML = `
-                    <td class="p-4 font-semibold text-slate-900">
-                        <div>${client.name}</div>
-                        <div class="text-xs font-normal text-slate-400">${client.vehicle} • ${client.phone}</div>
-                    </td>
-                    <td class="p-4 text-slate-600">${formatDate(client.lastWashDate)}</td>
-                    <td class="p-4">
-                        <span class="font-bold px-2.5 py-1 rounded-full text-xs ${isOverdue ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-700'}">${days} días</span>
-                    </td>
-                    <td class="p-4 text-slate-600">Cada ${client.frequencyDays} días</td>
-                    <td class="p-4">
-                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-800">
-                            <i class="fa-solid fa-star text-amber-500"></i> ${client.washesCount} lavados
-                        </span>
-                    </td>
-                    <td class="p-4 text-center">
-                        <div class="flex items-center justify-center gap-2">
-                            <a href="${waLink}" target="_blank" class="inline-flex items-center gap-1 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm transition-all">
-                                <i class="fa-brands fa-whatsapp text-sm"></i> Recordar
-                            </a>
-                            <button onclick="registerWashToday('${client.id}')" title="Marcar lavado hoy" class="bg-sky-100 hover:bg-sky-200 text-sky-700 text-xs font-bold px-2.5 py-1.5 rounded-lg">
-                                <i class="fa-solid fa-plus"></i> Lavó Hoy
-                            </button>
-                        </div>
-                    </td>
-                `;
-                tbody.appendChild(row);
-            });
-        }
-
-        // Actualizar estadísticas principales
-        function updateStats() {
-            document.getElementById('stat-total-clients').textContent = clientsDB.length;
-            const pending = clientsDB.filter(c => calculateDaysSince(c.lastWashDate) >= c.frequencyDays).length;
-            document.getElementById('stat-pending-reminders').textContent = pending;
-        }
-
-        // Marcar que el cliente lavó hoy
-        function registerWashToday(clientId) {
-            const client = clientsDB.find(c => c.id === clientId);
-            if(client) {
-                client.lastWashDate = new Date().toISOString().split('T')[0];
-                client.washesCount += 1;
-                renderAdminTable();
-                updateStats();
-                showToast(`¡Lavado registrado para ${client.name}!`);
-            }
-        }
-
-        // Buscar y mostrar datos en el Portal de Cliente VIP
-        function searchClientPortal(searchPhone = null) {
-            const phone = searchPhone || document.getElementById('portal-search-phone').value.trim();
-            const container = document.getElementById('loyalty-card-container');
-
-            const client = clientsDB.find(c => c.phone === phone) || clientsDB[0];
-
-            if(!client) {
-                container.innerHTML = `
-                    <div class="text-center py-8 text-slate-500">
-                        <i class="fa-solid fa-user-slash text-4xl mb-3 text-slate-300"></i>
-                        <p>No se encontró un cliente con ese número de teléfono.</p>
-                        <a href="#registro" onclick="switchTab('main')" class="text-sky-600 font-bold underline text-sm mt-2 block">Llenar Cuestionario</a>
-                    </div>
-                `;
-                return;
-            }
-
-            const daysSince = calculateDaysSince(client.lastWashDate);
-            const targetWashes = 5;
-            const progress = Math.min((client.washesCount % targetWashes) / targetWashes * 100, 100);
-            const remaining = targetWashes - (client.washesCount % targetWashes);
-
-            container.innerHTML = `
-                <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 relative overflow-hidden shadow-xl">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-6">
-                        <div>
-                            <p class="text-xs uppercase tracking-widest text-sky-400 font-extrabold">Tarjeta VIP AutoSpark</p>
-                            <h3 class="text-2xl font-bold mt-1">${client.name}</h3>
-                            <p class="text-xs text-slate-400">${client.vehicle} • Tel: ${client.phone}</p>
-                        </div>
-                        <div class="bg-sky-500/20 text-sky-300 px-4 py-2 rounded-2xl border border-sky-400/30 font-bold text-sm">
-                            ${client.washesCount} Lavados Totales
-                        </div>
-                    </div>
-
-                    <!-- Barra de Progreso de Fidelización -->
-                    <div class="my-6 space-y-2">
-                        <div class="flex justify-between text-xs font-bold">
-                            <span class="text-slate-300">Progreso para tu Próximo Encerado Gratis:</span>
-                            <span class="text-emerald-400">${remaining === 0 ? '¡BENEFICIO DISPONIBLE!' : `Faltan ${remaining} lavados`}</span>
-                        </div>
-                        <div class="w-full h-4 bg-slate-800 rounded-full overflow-hidden p-0.5 border border-slate-700">
-                            <div class="h-full bg-gradient-to-r from-sky-400 to-emerald-400 rounded-full transition-all duration-500" style="width: ${progress === 0 && client.washesCount > 0 ? 100 : progress}%"></div>
-                        </div>
-                    </div>
-
-                    <!-- Recomendación & Agendamiento -->
-                    <div class="bg-slate-800/80 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 border border-slate-700">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl flex-shrink-0">
-                                <i class="fa-solid fa-clock"></i>
-                            </div>
-                            <div class="text-xs">
-                                <p class="font-bold text-white">Han transcurrido ${daysSince} días desde tu último servicio</p>
-                                <p class="text-slate-400">Tu frecuencia configurada es de cada ${client.frequencyDays} días.</p>
-                            </div>
-                        </div>
-                        <button onclick="openBookingModal('${client.id}')" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-6 py-3 rounded-xl shadow-lg transition-all text-xs whitespace-nowrap flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-calendar-check"></i> Agendar Cita Prioritaria
-                        </button>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Agregar cliente de prueba al dashboard del dueño
-        function addNewMockClient() {
-            const names = ['Laura Restrepo', 'Diego Morales', 'Sofía Vargas'];
-            const randomName = names[Math.floor(Math.random() * names.length)];
-            const randomPhone = '311' + Math.floor(1000000 + Math.random() * 9000000);
-            
-            clientsDB.push({
-                id: Date.now().toString(),
-                name: randomName,
-                phone: randomPhone,
-                vehicle: 'Sedán / Chevrolet',
-                lastWashDate: '2026-09-10',
-                frequencyDays: 15,
-                washesCount: 3
-            });
-
-            renderAdminTable();
-            updateStats();
-            showToast("Cliente de prueba registrado.");
-        }
-
-        // Control de Modal de Citas
-        function openBookingModal(clientId) {
-            const client = clientsDB.find(c => c.id === clientId);
-            if(!client) return;
-            selectedClientForModal = client;
-
-            document.getElementById('modal-client-name').value = client.name;
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            document.getElementById('modal-booking-date').value = tomorrow.toISOString().split('T')[0];
-
-            document.getElementById('appointment-modal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('appointment-modal').classList.add('hidden');
-        }
-
-        function confirmAppointment() {
-            const date = document.getElementById('modal-booking-date').value;
-            const time = document.getElementById('modal-booking-time').value;
-
-            closeModal();
-            showToast(`¡Cita reservada para ${selectedClientForModal.name} el ${date} a las ${time}!`);
-        }
-
-        // Helper de Toasts
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toast-message').textContent = msg;
-            toast.classList.remove('hidden');
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3500);
-        }
-    </script>
-</body>
-</html>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+
+:root {
+
+    --dark: #101820;
+    --green: #d8ff3e;
+    --green-dark: #b8e91d;
+
+    --background: #f5f7f8;
+    --white: #ffffff;
+
+    --text: #101820;
+    --gray: #69757d;
+    --border: #e3e8ea;
+
+    --red: #e95555;
+    --yellow: #d99616;
+    --success: #159a69;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    background: var(--background);
+
+    color: var(--text);
+
+    font-family: "DM Sans", sans-serif;
+}
+
+
+h1,
+h2,
+h3 {
+
+    font-family: "Space Grotesk", sans-serif;
+}
+
+
+p {
+
+    color: var(--gray);
+
+    line-height: 1.7;
+}
+
+
+a {
+
+    text-decoration: none;
+
+    color: inherit;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+
+    height: 78px;
+
+    padding: 0 6%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background: white;
+
+    border-bottom: 1px solid var(--border);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 20;
+}
+
+
+.logo {
+
+    font-family: "Space Grotesk";
+
+    font-weight: 700;
+
+    font-size: 20px;
+}
+
+
+.navbar nav {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+}
+
+
+.navbar nav a {
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.nav-vip {
+
+    background: var(--dark);
+
+    color: white;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+}
+
+
+.nav-admin {
+
+    background: var(--green);
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+}
+
+
+/* GENERAL */
+
+.tag {
+
+    display: inline-block;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #647078;
+
+    margin-bottom: 15px;
+}
+
+
+.btn {
+
+    border: none;
+
+    padding: 14px 20px;
+
+    border-radius: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    display: inline-flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-family: inherit;
+}
+
+
+.btn-dark {
+
+    background: var(--dark);
+
+    color: white;
+}
+
+
+.btn-light {
+
+    background: white;
+
+    border: 1px solid var(--border);
+}
+
+
+.full {
+
+    width: 100%;
+}
+
+
+/* HERO */
+
+.hero {
+
+    min-height: 650px;
+
+    padding: 80px 8%;
+
+    display: grid;
+
+    grid-template-columns: 1.4fr .6fr;
+
+    align-items: center;
+
+    gap: 70px;
+
+    background: linear-gradient(
+        120deg,
+        white,
+        #f1f5ef
+    );
+}
+
+
+.hero h1 {
+
+    font-size: clamp(
+        45px,
+        6vw,
+        78px
+    );
+
+    line-height: .98;
+
+    letter-spacing: -4px;
+
+    max-width: 850px;
+}
+
+
+.hero h1 span {
+
+    background: var(--green);
+
+    padding: 0 8px;
+}
+
+
+.hero-content p {
+
+    max-width: 650px;
+
+    font-size: 18px;
+}
+
+
+.hero-buttons {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+    flex-wrap: wrap;
+}
+
+
+.hero-card {
+
+    background: var(--dark);
+
+    color: white;
+
+    padding: 35px;
+
+    border-radius: 25px;
+}
+
+
+.car-icon {
+
+    font-size: 60px;
+
+    margin-bottom: 30px;
+}
+
+
+.hero-card small {
+
+    color: #aab4ba;
+
+    letter-spacing: 2px;
+}
+
+
+.hero-card h3 {
+
+    font-size: 28px;
+}
+
+
+/* SECTIONS */
+
+.section {
+
+    padding: 100px 8%;
+
+    max-width: 1400px;
+
+    margin: auto;
+}
+
+
+.section-title {
+
+    max-width: 750px;
+}
+
+
+.section-title h2 {
+
+    font-size: 45px;
+
+    letter-spacing: -2px;
+}
+
+
+.center {
+
+    text-align: center;
+
+    margin: auto;
+}
+
+
+/* FEATURES */
+
+.features {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin-top: 50px;
+}
+
+
+.feature {
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    padding: 30px;
+
+    border-radius: 20px;
+}
+
+
+.feature span {
+
+    font-size: 30px;
+}
+
+
+.feature h3 {
+
+    margin-top: 25px;
+}
+
+
+/* SERVICES */
+
+.services {
+
+    background: var(--dark);
+
+    padding: 100px 8%;
+
+    color: white;
+}
+
+
+.services h2 {
+
+    color: white;
+}
+
+
+.service-grid {
+
+    max-width: 1150px;
+
+    margin: 50px auto 0;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+
+.service-card {
+
+    background: white;
+
+    color: var(--text);
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    min-height: 420px;
+
+    position: relative;
+}
+
+
+.service-card.featured {
+
+    border: 3px solid var(--green);
+}
+
+
+.popular {
+
+    position: absolute;
+
+    top: 15px;
+
+    right: 15px;
+
+    background: var(--green);
+
+    padding: 7px 10px;
+
+    border-radius: 7px;
+
+    font-size: 9px;
+
+    font-weight: 800;
+}
+
+
+.number {
+
+    color: #88939a;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.service-card h3 {
+
+    font-size: 30px;
+
+    margin-top: 40px;
+}
+
+
+.service-card strong {
+
+    font-family: "Space Grotesk";
+
+    font-size: 34px;
+}
+
+
+.service-card li {
+
+    color: var(--gray);
+
+    line-height: 2;
+}
+
+
+.service-button {
+
+    width: 100%;
+
+    border: none;
+
+    background: #edf0f1;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* REGISTER */
+
+.register {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 70px;
+
+    align-items: start;
+}
+
+
+.register h2 {
+
+    font-size: 43px;
+}
+
+
+.note {
+
+    background: #edf1f2;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+}
+
+
+/* FORM */
+
+.form {
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    border: 1px solid var(--border);
+
+    display: grid;
+
+    gap: 16px;
+}
+
+
+.form label,
+.modal-content label {
+
+    display: grid;
+
+    gap: 7px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.form input,
+.form select,
+.modal-content input,
+.modal-content select,
+#vipPhone,
+#adminSearch {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    font: inherit;
+}
+
+
+/* FOOTER */
+
+footer {
+
+    background: var(--dark);
+
+    color: #ccd3d7;
+
+    padding: 30px 8%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    font-size: 12px;
+}
+
+
+/* VIP */
+
+.portal {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 80px 5%;
+}
+
+
+.vip-search {
+
+    background: white;
+
+    padding: 45px;
+
+    border-radius: 25px;
+
+    border: 1px solid var(--border);
+}
+
+
+.vip-search h1 {
+
+    font-size: 50px;
+
+    margin: 0;
+}
+
+
+#vipSearch {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+
+#vipSearch input {
+
+    flex: 1;
+}
+
+
+.vip-result {
+
+    margin-top: 30px;
+}
+
+
+.hidden {
+
+    display: none !important;
+}
+
+
+.welcome {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+
+.vip-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 16px;
+}
+
+
+.vip-card {
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    padding: 28px;
+
+    min-height: 150px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+.vip-card strong {
+
+    font-family: "Space Grotesk";
+
+    font-size: 28px;
+}
+
+
+.vip-card small {
+
+    color: #758087;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    font-weight: 700;
+}
+
+
+.card-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+
+.progress {
+
+    height: 12px;
+
+    background: #edf0f1;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.progress span {
+
+    display: block;
+
+    height: 100%;
+
+    width: 0;
+
+    background: var(--green-dark);
+
+    transition: .4s;
+}
+
+
+/* MODAL */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: #101820aa;
+
+    display: grid;
+
+    place-items: center;
+
+    padding: 20px;
+
+    z-index: 50;
+}
+
+
+.modal-content {
+
+    background: white;
+
+    width: min(500px, 100%);
+
+    padding: 35px;
+
+    border-radius: 22px;
+
+    position: relative;
+}
+
+
+.close {
+
+    position: absolute;
+
+    top: 10px;
+
+    right: 15px;
+
+    border: none;
+
+    background: none;
+
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+
+/* ADMIN */
+
+.admin {
+
+    max-width: 1400px;
+
+    margin: auto;
+
+    padding: 60px 5%;
+}
+
+
+.admin-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: end;
+
+    margin-bottom: 30px;
+}
+
+
+.metrics {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+
+.metric {
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    display: grid;
+
+    gap: 7px;
+}
+
+
+.metric span {
+
+    font-size: 25px;
+}
+
+
+.metric small {
+
+    color: #758087;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+.metric strong {
+
+    font-family: "Space Grotesk";
+
+    font-size: 35px;
+}
+
+
+.table-section {
+
+    background: white;
+
+    margin-top: 25px;
+
+    border-radius: 20px;
+
+    border: 1px solid var(--border);
+
+    overflow: hidden;
+}
+
+
+.table-header {
+
+    padding: 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.table-header h2 {
+
+    margin: 0;
+}
+
+
+.table-container {
+
+    overflow-x: auto;
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    font-size: 13px;
+}
+
+
+th,
+td {
+
+    padding: 17px;
+
+    text-align: left;
+
+    border-bottom: 1px solid var(--border);
+
+    white-space: nowrap;
+}
+
+
+th {
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    color: #758087;
+}
+
+
+.action {
+
+    border: none;
+
+    padding: 8px 10px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+}
+
+
+.whatsapp {
+
+    background: #dcf7e9;
+
+    color: #14734f;
+}
+
+
+.wash {
+
+    background: var(--green);
+}
+
+
+.status {
+
+    padding: 6px 10px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+}
+
+
+.status.green {
+
+    background: #dff6ec;
+
+    color: #14734f;
+}
+
+
+.status.yellow {
+
+    background: #fff0d3;
+
+    color: #98640e;
+}
+
+
+.status.red {
+
+    background: #ffe0e0;
+
+    color: #a53232;
+}
+
+
+/* MOBILE */
+
+@media(max-width: 850px) {
+
+    .navbar nav {
+
+        gap: 10px;
+
+        font-size: 12px;
+    }
+
+    .hero,
+    .register {
+
+        grid-template-columns: 1fr;
+    }
+
+    .features,
+    .service-grid,
+    .metrics,
+    .vip-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+
+        padding-top: 60px;
+    }
+
+    .service-card.featured {
+
+        transform: none;
+    }
+
+    footer {
+
+        flex-direction: column;
+    }
+
+    .admin-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+}
