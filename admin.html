@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Dashboard | Team Car Wash
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+
+<body class="admin-body">
+
+
+<header class="navbar">
+
+    <a
+        href="index.html"
+        class="logo">
+
+        🚗 Team Car Wash
+
+    </a>
+
+    <nav>
+
+        <a href="index.html">
+            Sitio público
+        </a>
+
+        <a href="cliente.html">
+            Portal VIP
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="admin">
+
+    <div class="admin-header">
+
+        <div>
+
+            <span class="tag">
+                PANEL DEL NEGOCIO
+            </span>
+
+            <h1>
+                Dashboard
+            </h1>
+
+            <p>
+                Gestiona clientes,
+                recordatorios y fidelización.
+            </p>
+
+        </div>
+
+
+        <button
+            id="clearDemo"
+            class="btn btn-light">
+
+            Restablecer demo
+
+        </button>
+
+    </div>
+
+
+
+    <!-- MÉTRICAS -->
+
+    <section class="metrics">
+
+
+        <div class="metric">
+
+            <span>
+                👥
+            </span>
+
+            <small>
+                TOTAL CLIENTES
+            </small>
+
+            <strong id="metricClients">
+                0
+            </strong>
+
+        </div>
+
+
+
+        <div class="metric">
+
+            <span>
+                🔔
+            </span>
+
+            <small>
+                RECORDATORIOS
+            </small>
+
+            <strong id="metricPending">
+                0
+            </strong>
+
+        </div>
+
+
+
+        <div class="metric">
+
+            <span>
+                🚗
+            </span>
+
+            <small>
+                LAVADOS DEL MES
+            </small>
+
+            <strong id="metricWashes">
+                0
+            </strong>
+
+        </div>
+
+
+
+        <div class="metric">
+
+            <span>
+                🔄
+            </span>
+
+            <small>
+                RETENCIÓN
+            </small>
+
+            <strong id="metricRetention">
+                0%
+            </strong>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- TABLA -->
+
+    <section class="table-section">
+
+        <div class="table-header">
+
+            <div>
+
+                <span class="tag">
+                    GESTIÓN
+                </span>
+
+                <h2>
+                    Clientes
+                </h2>
+
+            </div>
+
+
+            <input
+                id="adminSearch"
+                type="text"
+                placeholder="Buscar cliente...">
+
+        </div>
+
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Cliente
+                        </th>
+
+                        <th>
+                            WhatsApp
+                        </th>
+
+                        <th>
+                            Último lavado
+                        </th>
+
+                        <th>
+                            Días
+                        </th>
+
+                        <th>
+                            Visitas
+                        </th>
+
+                        <th>
+                            Estado
+                        </th>
+
+                        <th>
+                            Acciones
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="clientTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
