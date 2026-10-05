@@ -1,38 +1,30 @@
-/* =========================================================
-   TEAM CAR WASH
-   PREMIUM CAR WASH STYLE
-========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
-
-/* =========================================================
-   VARIABLES
-========================================================= */
+/* =====================================================
+   TEAM CAR WASH — MODERN PREMIUM
+===================================================== */
 
 :root {
-
     --black: #070808;
-    --dark: #0d0f0f;
-    --dark-2: #131515;
+    --dark: #0e1010;
+    --card: #151818;
 
-    --white: #f5f5f1;
-    --gray: #9b9d99;
+    --white: #f7f7f2;
+    --gray: #a4a7a3;
 
-    --lime: #c9ff32;
-    --lime-dark: #a9d91f;
+    --lime: #caff32;
+    --lime-soft: rgba(202,255,50,.12);
 
     --border: rgba(255,255,255,.10);
 
     --radius: 26px;
-
     --max: 1250px;
 }
 
 
-/* =========================================================
+/* =====================================================
    RESET
-========================================================= */
+===================================================== */
 
 * {
     margin: 0;
@@ -45,21 +37,24 @@ html {
 }
 
 body {
-
     background: var(--black);
-
     color: var(--white);
 
     font-family: "DM Sans", sans-serif;
 
-    overflow-x: hidden;
-
     line-height: 1.5;
+
+    overflow-x: hidden;
 }
 
 a {
     color: inherit;
     text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
 }
 
 button,
@@ -70,34 +65,11 @@ textarea {
 }
 
 
-/* =========================================================
-   SCROLLBAR
-========================================================= */
-
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--black);
-}
-
-::-webkit-scrollbar-thumb {
-    background: #343735;
-    border-radius: 20px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--lime);
-}
-
-
-/* =========================================================
+/* =====================================================
    NAVBAR
-========================================================= */
+===================================================== */
 
 .navbar {
-
     position: fixed;
 
     top: 0;
@@ -109,35 +81,27 @@ textarea {
 
     padding: 20px 5%;
 
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(7,8,8,.95),
-            rgba(7,8,8,.65),
-            transparent
-        );
+    background: rgba(7,8,8,.72);
 
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(255,255,255,.06);
 }
 
 .navbar-container {
-
-    width: min(100%, var(--max));
+    max-width: var(--max);
 
     margin: auto;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 }
 
 .logo {
-
     font-family: "Space Grotesk", sans-serif;
 
-    font-size: 22px;
+    font-size: 23px;
 
     font-weight: 700;
 
@@ -149,23 +113,19 @@ textarea {
 }
 
 .nav-links {
-
     display: flex;
 
-    align-items: center;
-
-    gap: 32px;
+    gap: 30px;
 
     list-style: none;
 }
 
 .nav-links a {
-
-    color: #c7c8c5;
+    color: #bfc2bd;
 
     font-size: 14px;
 
-    transition: .25s ease;
+    transition: .25s;
 }
 
 .nav-links a:hover {
@@ -173,7 +133,6 @@ textarea {
 }
 
 .menu-btn {
-
     display: none;
 
     border: none;
@@ -182,29 +141,26 @@ textarea {
 
     color: white;
 
-    font-size: 25px;
+    font-size: 26px;
 
     cursor: pointer;
 }
 
 
-/* =========================================================
+/* =====================================================
    HERO
-========================================================= */
+===================================================== */
 
 .hero {
+    min-height: 100vh;
 
     position: relative;
-
-    min-height: 100vh;
 
     display: flex;
 
     align-items: center;
 
-    padding:
-        150px 5%
-        100px;
+    padding: 150px 5% 100px;
 
     overflow: hidden;
 
@@ -212,22 +168,18 @@ textarea {
 
         linear-gradient(
             90deg,
-            rgba(7,8,8,.98) 0%,
-            rgba(7,8,8,.88) 32%,
-            rgba(7,8,8,.42) 70%,
+            rgba(7,8,8,.97) 0%,
+            rgba(7,8,8,.86) 35%,
+            rgba(7,8,8,.45) 70%,
             rgba(7,8,8,.15) 100%
         ),
 
-        url("images/hero.jpg")
+        url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2000&q=85")
 
         center / cover no-repeat;
 }
 
-
-/* Oscurecimiento inferior */
-
 .hero::after {
-
     content: "";
 
     position: absolute;
@@ -235,10 +187,9 @@ textarea {
     inset: 0;
 
     background:
-
         linear-gradient(
             to top,
-            var(--black) 0%,
+            var(--black),
             transparent 35%
         );
 
@@ -246,28 +197,21 @@ textarea {
 }
 
 .hero-content {
+    width: min(100%, var(--max));
+
+    margin: auto;
 
     position: relative;
 
     z-index: 2;
-
-    width: min(100%, var(--max));
-
-    margin: auto;
 }
 
 .hero h1 {
-
     max-width: 1050px;
 
-    margin-top: 25px;
+    font-family: "Space Grotesk", sans-serif;
 
-    font-family:
-        "Space Grotesk",
-        sans-serif;
-
-    font-size:
-        clamp(55px, 9vw, 125px);
+    font-size: clamp(55px, 9vw, 125px);
 
     line-height: .86;
 
@@ -281,12 +225,11 @@ textarea {
 }
 
 .hero p {
-
-    max-width: 580px;
+    max-width: 600px;
 
     margin-top: 30px;
 
-    color: #c1c3bf;
+    color: #c3c5c1;
 
     font-size: 18px;
 
@@ -294,12 +237,19 @@ textarea {
 }
 
 
-/* =========================================================
-   TAGS
-========================================================= */
+/* =====================================================
+   SECCIONES
+===================================================== */
+
+.section {
+    width: min(92%, var(--max));
+
+    margin: auto;
+
+    padding: 120px 0;
+}
 
 .section-tag {
-
     display: inline-block;
 
     color: var(--lime);
@@ -313,100 +263,34 @@ textarea {
     text-transform: uppercase;
 }
 
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-.section {
-
-    width: min(92%, var(--max));
-
-    margin: auto;
-
-    padding: 130px 0;
-}
-
 .section h2 {
-
     margin-top: 15px;
 
-    font-family:
-        "Space Grotesk",
-        sans-serif;
+    font-family: "Space Grotesk", sans-serif;
 
-    font-size:
-        clamp(42px, 6vw, 78px);
+    font-size: clamp(42px, 6vw, 75px);
 
     line-height: .92;
 
     letter-spacing: -4px;
 }
 
-.section-description {
 
-    max-width: 650px;
-
-    margin-top: 25px;
-
-    color: var(--gray);
-
-    font-size: 17px;
-
-    line-height: 1.7;
-}
-
-
-/* =========================================================
+/* =====================================================
    NOSOTROS
-========================================================= */
+===================================================== */
 
 .about {
-
     display: grid;
 
-    grid-template-columns:
-        1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 
-    gap: 80px;
+    gap: 70px;
 
     align-items: center;
 }
 
-
-/* Imagen */
-
-.about::after {
-
-    content: "";
-
-    display: block;
-
-    min-height: 520px;
-
-    border-radius: var(--radius);
-
-    background:
-
-        linear-gradient(
-            0deg,
-            rgba(7,8,8,.45),
-            transparent
-        ),
-
-        url("images/nosotros.jpg")
-
-        center / cover no-repeat;
-
-    border:
-        1px solid var(--border);
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.35);
-}
-
 .about p {
-
     margin-top: 25px;
 
     color: var(--gray);
@@ -416,17 +300,37 @@ textarea {
     line-height: 1.8;
 }
 
-.about strong {
-    color: white;
+.about::after {
+    content: "";
+
+    min-height: 500px;
+
+    border-radius: var(--radius);
+
+    background:
+
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.35),
+            transparent
+        ),
+
+        url("https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=85")
+
+        center / cover no-repeat;
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.35);
 }
 
 
-/* =========================================================
+/* =====================================================
    SERVICIOS
-========================================================= */
+===================================================== */
 
 .services-grid {
-
     display: grid;
 
     grid-template-columns:
@@ -434,14 +338,15 @@ textarea {
 
     gap: 18px;
 
-    margin-top: 60px;
+    margin-top: 55px;
 }
 
 .service-card {
+    min-height: 480px;
 
     position: relative;
 
-    min-height: 500px;
+    overflow: hidden;
 
     padding: 32px;
 
@@ -451,110 +356,77 @@ textarea {
 
     justify-content: flex-end;
 
-    overflow: hidden;
+    border-radius: var(--radius);
 
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
 
-    border-radius: 28px;
-
-    background-color: var(--dark-2);
-
-    background-position: center;
+    background-color: var(--card);
 
     background-size: cover;
 
+    background-position: center;
+
     transition:
-
-        transform .4s ease,
-
-        border-color .4s ease;
+        transform .35s ease,
+        border-color .35s ease;
 }
 
 
-/* Imágenes de servicios */
+/* EXPRESS */
 
 .service-card:nth-child(1) {
-
     background-image:
 
         linear-gradient(
             to top,
-            rgba(7,8,8,.98) 0%,
-            rgba(7,8,8,.55) 50%,
-            rgba(7,8,8,.08) 100%
+            rgba(5,6,6,.97) 0%,
+            rgba(5,6,6,.55) 55%,
+            rgba(5,6,6,.05) 100%
         ),
 
-        url("images/express.jpg");
+        url("https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1000&q=85");
 }
+
+
+/* PREMIUM */
 
 .service-card:nth-child(2) {
-
     background-image:
 
         linear-gradient(
             to top,
-            rgba(7,8,8,.98) 0%,
-            rgba(7,8,8,.50) 50%,
-            rgba(7,8,8,.05) 100%
+            rgba(5,6,6,.97) 0%,
+            rgba(5,6,6,.50) 55%,
+            rgba(5,6,6,.05) 100%
         ),
 
-        url("images/premium.jpg");
+        url("https://images.unsplash.com/photo-1552933529-e359b2477252?auto=format&fit=crop&w=1000&q=85");
 }
+
+
+/* DETAILING */
 
 .service-card:nth-child(3) {
-
     background-image:
 
         linear-gradient(
             to top,
-            rgba(7,8,8,.98) 0%,
-            rgba(7,8,8,.50) 50%,
-            rgba(7,8,8,.05) 100%
+            rgba(5,6,6,.97) 0%,
+            rgba(5,6,6,.48) 55%,
+            rgba(5,6,6,.05) 100%
         ),
 
-        url("images/detailing.jpg");
+        url("https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1000&q=85");
 }
-
 
 .service-card:hover {
-
-    transform:
-        translateY(-10px);
+    transform: translateY(-9px);
 
     border-color:
-        rgba(201,255,50,.55);
-}
-
-
-/* Zoom imagen */
-
-.service-card::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(201,255,50,.08),
-            transparent 50%
-        );
-
-    opacity: 0;
-
-    transition: .4s ease;
-}
-
-.service-card:hover::before {
-    opacity: 1;
+        rgba(202,255,50,.55);
 }
 
 .service-card h3 {
-
     position: relative;
 
     z-index: 2;
@@ -564,25 +436,21 @@ textarea {
         sans-serif;
 
     font-size: 32px;
-
-    margin-bottom: 10px;
 }
 
 .service-card p {
-
     position: relative;
 
     z-index: 2;
 
-    color: #c5c7c3;
+    margin-top: 8px;
+
+    color: #c6c8c4;
 
     font-size: 15px;
-
-    line-height: 1.7;
 }
 
 .service-price {
-
     position: relative;
 
     z-index: 2;
@@ -600,31 +468,26 @@ textarea {
     font-weight: 700;
 }
 
-
-/* Más elegido */
-
 .service-card.featured {
-
     border-color:
-        rgba(201,255,50,.45);
+        rgba(202,255,50,.45);
 }
 
 .service-card.featured::after {
-
     content: "MÁS ELEGIDO";
 
     position: absolute;
 
-    top: 22px;
-    left: 22px;
+    top: 20px;
+    left: 20px;
 
-    padding: 8px 12px;
-
-    border-radius: 50px;
+    padding: 7px 11px;
 
     background: var(--lime);
 
-    color: var(--black);
+    color: #080909;
+
+    border-radius: 50px;
 
     font-size: 10px;
 
@@ -634,80 +497,70 @@ textarea {
 }
 
 
-/* =========================================================
+/* =====================================================
    FIDELIZACIÓN
-========================================================= */
+===================================================== */
 
 .loyalty {
-
     position: relative;
-
-    overflow: hidden;
 
     background:
         linear-gradient(
             135deg,
-            #0c0e0d,
-            #121512
+            #0d100d,
+            #111411
         );
 
-    border-top:
-        1px solid var(--border);
+    border-top: 1px solid var(--border);
 
-    border-bottom:
-        1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .loyalty-grid {
-
     display: grid;
 
     grid-template-columns:
         1fr 1fr;
 
-    gap: 80px;
+    gap: 70px;
 
     align-items: center;
 }
 
 .loyalty-card {
+    padding: 40px;
 
-    padding: 45px;
+    border-radius: var(--radius);
 
     border:
-        1px solid rgba(201,255,50,.20);
-
-    border-radius: 28px;
+        1px solid rgba(202,255,50,.25);
 
     background:
-
         linear-gradient(
             145deg,
-            rgba(201,255,50,.08),
+            rgba(202,255,50,.09),
             rgba(255,255,255,.025)
         );
 
     box-shadow:
-        0 30px 90px rgba(0,0,0,.3);
+        0 30px 80px rgba(0,0,0,.3);
 }
 
 .progress {
-
     width: 100%;
 
     height: 9px;
 
     margin: 20px 0;
 
-    overflow: hidden;
-
     border-radius: 50px;
 
     background: #292d29;
+
+    overflow: hidden;
 }
 
 .progress-bar {
-
     height: 100%;
 
     border-radius: inherit;
@@ -716,41 +569,37 @@ textarea {
 }
 
 
-/* =========================================================
-   REGISTRO
-========================================================= */
+/* =====================================================
+   FORMULARIO
+===================================================== */
 
 .register {
-
     max-width: 900px;
 }
 
 .register-header {
-    margin-bottom: 45px;
+    margin-bottom: 40px;
 }
 
 form {
-
     display: grid;
 
     gap: 18px;
 
-    padding: 42px;
+    padding: 40px;
 
-    border:
-        1px solid var(--border);
+    border-radius: var(--radius);
 
-    border-radius: 28px;
+    background: #111313;
 
-    background: #101212;
+    border: 1px solid var(--border);
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,.2);
+        0 30px 80px rgba(0,0,0,.25);
 }
 
 form label {
-
-    color: #d3d5d1;
+    color: #d7d9d5;
 
     font-size: 13px;
 
@@ -760,48 +609,44 @@ form label {
 input,
 select,
 textarea {
-
     width: 100%;
-
-    padding: 16px 18px;
 
     margin-top: 7px;
 
+    padding: 16px 18px;
+
     color: white;
 
-    background: #191b1b;
+    background: #1a1c1c;
 
     border:
-        1px solid rgba(255,255,255,.08);
+        1px solid rgba(255,255,255,.09);
 
     border-radius: 13px;
 
     outline: none;
 
-    transition: .25s ease;
+    transition: .25s;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-
-    border-color:
-        var(--lime);
+    border-color: var(--lime);
 
     box-shadow:
         0 0 0 3px
-        rgba(201,255,50,.08);
+        rgba(202,255,50,.08);
 }
 
 
-/* =========================================================
+/* =====================================================
    BOTONES
-   SOLO CAMBIAMOS APARIENCIA
-========================================================= */
+   NO SE AGREGAN NI ELIMINAN
+===================================================== */
 
 button,
 .btn {
-
     border: none;
 
     border-radius: 100px;
@@ -810,65 +655,51 @@ button,
 
     background: var(--lime);
 
-    color: var(--black);
+    color: #080909;
 
     font-weight: 700;
 
     cursor: pointer;
 
-    transition:
-
-        transform .25s ease,
-
-        box-shadow .25s ease,
-
-        background .25s ease;
+    transition: .25s;
 }
 
 button:hover,
 .btn:hover {
+    background: #dcff78;
 
-    background: #d8ff6c;
-
-    transform:
-        translateY(-3px);
+    transform: translateY(-3px);
 
     box-shadow:
         0 15px 35px
-        rgba(201,255,50,.16);
+        rgba(202,255,50,.18);
 }
 
 
-/* =========================================================
+/* =====================================================
    CONTACTO
-========================================================= */
+===================================================== */
 
 .contact {
-
     border-top:
         1px solid var(--border);
 }
 
 .contact-header {
-
     max-width: 750px;
 
-    margin-bottom: 55px;
+    margin-bottom: 50px;
 }
 
 .contact-header p {
-
-    margin-top: 25px;
+    margin-top: 20px;
 
     color: var(--gray);
 
     font-size: 17px;
-
-    line-height: 1.7;
 }
 
 .contact-grid {
-
     display: grid;
 
     grid-template-columns:
@@ -878,12 +709,9 @@ button:hover,
 }
 
 .contact-card {
-
     position: relative;
 
-    min-height: 180px;
-
-    padding: 30px;
+    min-height: 170px;
 
     display: flex;
 
@@ -891,40 +719,36 @@ button:hover,
 
     gap: 18px;
 
-    overflow: hidden;
+    padding: 28px;
 
-    border:
-        1px solid var(--border);
-
-    border-radius: 25px;
+    border-radius: 24px;
 
     background:
         linear-gradient(
             145deg,
-            #151717,
-            #0d0f0f
+            #171a19,
+            #0e1010
         );
 
-    transition: .3s ease;
+    border: 1px solid var(--border);
+
+    transition: .3s;
 }
 
 .contact-card:hover {
-
-    transform:
-        translateY(-7px);
+    transform: translateY(-7px);
 
     border-color:
-        rgba(201,255,50,.4);
+        rgba(202,255,50,.45);
 }
 
 .contact-icon {
-
     width: 58px;
     height: 58px;
 
-    flex-shrink: 0;
-
     display: flex;
+
+    flex-shrink: 0;
 
     align-items: center;
     justify-content: center;
@@ -933,13 +757,12 @@ button:hover,
 
     background: var(--lime);
 
-    color: var(--black);
+    color: #080909;
 
     font-size: 24px;
 }
 
 .contact-card h3 {
-
     margin: 4px 0;
 
     font-family:
@@ -950,14 +773,12 @@ button:hover,
 }
 
 .contact-card p {
-
     color: var(--gray);
 
     font-size: 13px;
 }
 
 .contact-card > div > span {
-
     color: var(--lime);
 
     font-size: 11px;
@@ -968,11 +789,10 @@ button:hover,
 }
 
 .contact-arrow {
-
     position: absolute;
 
     top: 20px;
-    right: 22px;
+    right: 20px;
 
     color: var(--gray);
 
@@ -980,61 +800,46 @@ button:hover,
 }
 
 
-/* =========================================================
+/* =====================================================
    CLIENTE VIP
-========================================================= */
+===================================================== */
 
 .vip-card,
 .customer-card,
 .client-card {
-
     padding: 40px;
 
-    border:
-        1px solid var(--border);
-
-    border-radius: 28px;
-
     background: #111313;
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
 
     box-shadow:
         0 25px 70px rgba(0,0,0,.25);
 }
 
 
-/* =========================================================
+/* =====================================================
    ADMIN
-========================================================= */
+===================================================== */
 
 .admin-card,
 .dashboard-card {
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 22px;
-
     background: #111313;
 
-    transition: .3s ease;
-}
+    border: 1px solid var(--border);
 
-.admin-card:hover,
-.dashboard-card:hover {
-
-    border-color:
-        rgba(201,255,50,.3);
+    border-radius: 22px;
 }
 
 table {
-
     width: 100%;
 
     border-collapse: collapse;
 }
 
 th {
-
     padding: 15px;
 
     color: var(--gray);
@@ -1048,23 +853,21 @@ th {
 }
 
 td {
-
-    padding: 18px 15px;
+    padding: 17px 15px;
 
     border-bottom:
         1px solid rgba(255,255,255,.05);
 }
 
 
-/* =========================================================
+/* =====================================================
    BADGES
-========================================================= */
+===================================================== */
 
 .badge {
-
     display: inline-block;
 
-    padding: 6px 11px;
+    padding: 6px 10px;
 
     border-radius: 50px;
 
@@ -1074,15 +877,13 @@ td {
 }
 
 .badge.success {
-
     color: var(--lime);
 
     background:
-        rgba(201,255,50,.10);
+        rgba(202,255,50,.10);
 }
 
 .badge.warning {
-
     color: #ffd45c;
 
     background:
@@ -1090,12 +891,11 @@ td {
 }
 
 
-/* =========================================================
+/* =====================================================
    MODAL
-========================================================= */
+===================================================== */
 
 .modal {
-
     position: fixed;
 
     inset: 0;
@@ -1105,7 +905,6 @@ td {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     padding: 20px;
@@ -1113,36 +912,32 @@ td {
     background:
         rgba(0,0,0,.78);
 
-    backdrop-filter:
-        blur(12px);
+    backdrop-filter: blur(12px);
 }
 
 .modal-content {
-
-    width:
-        min(500px,100%);
+    width: min(500px, 100%);
 
     padding: 35px;
+
+    background: #151818;
 
     border:
         1px solid var(--border);
 
     border-radius: 28px;
 
-    background: #151717;
-
     box-shadow:
         0 30px 100px rgba(0,0,0,.5);
 }
 
 
-/* =========================================================
+/* =====================================================
    FOOTER
-========================================================= */
+===================================================== */
 
 footer {
-
-    padding: 65px 5%;
+    padding: 60px 5%;
 
     border-top:
         1px solid var(--border);
@@ -1153,14 +948,11 @@ footer {
 }
 
 .footer-container {
-
-    width: min(100%, var(--max));
+    max-width: var(--max);
 
     margin: auto;
 
     display: flex;
-
-    align-items: center;
 
     justify-content: space-between;
 
@@ -1168,26 +960,13 @@ footer {
 }
 
 
-/* =========================================================
-   SELECCIÓN
-========================================================= */
-
-::selection {
-
-    background: var(--lime);
-
-    color: var(--black);
-}
-
-
-/* =========================================================
+/* =====================================================
    RESPONSIVE
-========================================================= */
+===================================================== */
 
 @media (max-width: 900px) {
 
     .nav-links {
-
         position: absolute;
 
         top: 75px;
@@ -1219,25 +998,21 @@ footer {
 
     .services-grid,
     .contact-grid {
-
         grid-template-columns: 1fr;
     }
 
     .about,
     .loyalty-grid {
-
         grid-template-columns: 1fr;
 
         gap: 45px;
     }
 
     .about::after {
-
         min-height: 380px;
     }
 
     .hero h1 {
-
         letter-spacing: -4px;
     }
 }
@@ -1246,13 +1021,10 @@ footer {
 @media (max-width: 600px) {
 
     .section {
-
-        padding:
-            90px 0;
+        padding: 85px 0;
     }
 
     .hero {
-
         padding:
             130px 5%
             80px;
@@ -1262,7 +1034,6 @@ footer {
     }
 
     .hero h1 {
-
         font-size:
             clamp(48px, 15vw, 80px);
 
@@ -1270,43 +1041,34 @@ footer {
     }
 
     .hero p {
-
         font-size: 16px;
     }
 
     .section h2 {
-
         font-size: 45px;
 
         letter-spacing: -2px;
     }
 
     .service-card {
-
         min-height: 420px;
     }
 
     form {
-
         padding: 25px;
     }
 
     .loyalty-card {
-
         padding: 25px;
     }
 
     .contact-card {
-
         min-height: 145px;
 
         padding: 23px;
     }
 
     .footer-container {
-
         flex-direction: column;
-
-        align-items: flex-start;
     }
 }
