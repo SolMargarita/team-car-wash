@@ -4,133 +4,303 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Team Car Wash | Fidelización para Autolavados</title>
+    <title>Team Car Wash | Lava, cuida y regresa</title>
 
     <link rel="stylesheet" href="style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- =========================
-        NAVEGACIÓN
-========================= -->
+<header class="navbar">
 
-<header class="header">
+    <a href="index.html" class="logo">
+        🚗 Team Car Wash
+    </a>
 
-    <div class="container nav">
+    <nav id="navLinks">
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#registro">Registro</a>
 
-        <a href="#inicio" class="logo">
-            <span class="logo-icon">🚗</span>
-            <span>TEAM <strong>CAR WASH</strong></span>
+        <a href="cliente.html" class="nav-vip">
+            Cliente VIP
         </a>
 
-        <button class="menu-btn" id="menuBtn">☰</button>
-
-        <nav id="navLinks">
-            <a href="#problema">Problema</a>
-            <a href="#solucion">Solución</a>
-            <a href="#funciones">Funciones</a>
-            <a href="#beneficios">Beneficios</a>
-            <a href="#contacto" class="nav-button">Empezar</a>
-        </nav>
-
-    </div>
+        <a href="admin.html" class="nav-admin">
+            Admin
+        </a>
+    </nav>
 
 </header>
 
 
 <main>
 
-<!-- =========================
-        HERO
-========================= -->
+<!-- HERO -->
 
-<section class="hero" id="inicio">
+<section id="inicio" class="hero">
 
-    <div class="hero-background"></div>
+    <div class="hero-content">
 
-    <div class="container hero-content">
+        <span class="tag">
+            LAVA · CUIDA · REGRESA
+        </span>
 
-        <div class="hero-text">
+        <h1>
+            Tu carro limpio,
+            <span>sin que tengas que acordarte.</span>
+        </h1>
 
-            <span class="tag">
-                🚗 SISTEMA DE FIDELIZACIÓN PARA AUTOLAVADOS
-            </span>
+        <p>
+            En Team Car Wash cuidamos tu vehículo y te ayudamos
+            a recordar cuándo es momento de volver.
+        </p>
 
-            <h1>
-                Haz que tus clientes
-                <span>vuelvan.</span>
-            </h1>
+        <div class="hero-buttons">
+
+            <a href="#registro" class="btn btn-dark">
+                Registrarme
+            </a>
+
+            <a href="cliente.html" class="btn btn-light">
+                Soy cliente frecuente
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <div class="car-icon">
+            🚘
+        </div>
+
+        <small>
+            PRÓXIMO SERVICIO
+        </small>
+
+        <h3 id="heroDate">
+            Regístrate para calcularlo
+        </h3>
+
+        <p>
+            Te ayudamos a no olvidar
+            tu próximo lavado.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- NOSOTROS -->
+
+<section id="nosotros" class="section">
+
+    <div class="section-title">
+
+        <span class="tag">
+            NOSOTROS
+        </span>
+
+        <h2>
+            Mantenimiento preventivo sin olvidos.
+        </h2>
+
+        <p>
+            No queremos que esperes hasta que tu vehículo
+            esté demasiado sucio para volver.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <span>🔔</span>
+
+            <h3>
+                Recordatorios
+            </h3>
 
             <p>
-                No esperes a que tu cliente recuerde cuándo debe volver.
-                Mantén el contacto, envía recordatorios y convierte
-                visitas ocasionales en clientes frecuentes.
+                Calculamos cuándo podría ser
+                el momento ideal para regresar.
             </p>
-
-            <div class="hero-buttons">
-
-                <a href="#solucion" class="btn btn-primary">
-                    Conocer el sistema →
-                </a>
-
-                <a href="#funciones" class="btn btn-secondary">
-                    Ver cómo funciona
-                </a>
-
-            </div>
 
         </div>
 
 
-        <!-- TARJETA VISUAL -->
+        <div class="feature">
 
-        <div class="hero-card">
+            <span>⭐</span>
 
-            <div class="notification-header">
-                <span>TEAM CAR WASH</span>
-                <small>Ahora</small>
-            </div>
+            <h3>
+                Fidelización
+            </h3>
 
-            <div class="notification">
+            <p>
+                Acumula visitas y avanza
+                hacia beneficios.
+            </p>
 
-                <div class="notification-icon">
-                    🚗
-                </div>
+        </div>
 
-                <div>
-                    <strong>¡Es momento de volver!</strong>
 
-                    <p>
-                        Han pasado 3 semanas desde tu último lavado.
-                    </p>
-                </div>
+        <div class="feature">
 
-            </div>
+            <span>📊</span>
 
-            <div class="progress-box">
+            <h3>
+                Seguimiento
+            </h3>
 
-                <div class="progress-top">
-                    <span>Fidelización</span>
-                    <strong>4 / 5 lavados</strong>
-                </div>
+            <p>
+                El negocio puede conocer
+                mejor a sus clientes.
+            </p>
 
-                <div class="progress">
-                    <span></span>
-                </div>
+        </div>
 
-                <small>
-                    ¡Te falta 1 lavado para obtener tu beneficio!
-                </small>
+    </div>
 
-            </div>
+</section>
 
-            <button class="fake-button">
-                Reservar mi lavado
+
+
+<!-- SERVICIOS -->
+
+<section id="servicios" class="services">
+
+    <div class="section-title center">
+
+        <span class="tag">
+            SERVICIOS
+        </span>
+
+        <h2>
+            Elige cómo quieres cuidar tu vehículo.
+        </h2>
+
+    </div>
+
+
+    <div class="service-grid">
+
+
+        <div class="service-card">
+
+            <span class="number">
+                01
+            </span>
+
+            <h3>
+                Express
+            </h3>
+
+            <strong>
+                $20.000
+            </strong>
+
+            <p>
+                Para una limpieza rápida y práctica.
+            </p>
+
+            <ul>
+                <li>Exterior</li>
+                <li>Vidrios</li>
+                <li>Secado</li>
+            </ul>
+
+            <button
+                class="service-button"
+                data-service="Express">
+
+                Elegir servicio
+
+            </button>
+
+        </div>
+
+
+
+        <div class="service-card featured">
+
+            <span class="popular">
+                MÁS ELEGIDO
+            </span>
+
+            <span class="number">
+                02
+            </span>
+
+            <h3>
+                Premium
+            </h3>
+
+            <strong>
+                $35.000
+            </strong>
+
+            <p>
+                Limpieza completa para mantener
+                tu vehículo impecable.
+            </p>
+
+            <ul>
+                <li>Exterior e interior</li>
+                <li>Vidrios</li>
+                <li>Secado especializado</li>
+            </ul>
+
+            <button
+                class="service-button"
+                data-service="Premium">
+
+                Elegir servicio
+
+            </button>
+
+        </div>
+
+
+
+        <div class="service-card">
+
+            <span class="number">
+                03
+            </span>
+
+            <h3>
+                Detailing
+            </h3>
+
+            <strong>
+                $60.000
+            </strong>
+
+            <p>
+                Limpieza profunda con acabado especial.
+            </p>
+
+            <ul>
+                <li>Interior profundo</li>
+                <li>Exterior completo</li>
+                <li>Acabado especial</li>
+            </ul>
+
+            <button
+                class="service-button"
+                data-service="Detailing">
+
+                Elegir servicio
+
             </button>
 
         </div>
@@ -140,540 +310,165 @@
 </section>
 
 
-<!-- =========================
-        PROBLEMA
-========================= -->
 
-<section class="section problem" id="problema">
+<!-- REGISTRO -->
 
-    <div class="container">
+<section id="registro" class="register section">
 
-        <div class="section-title">
+    <div>
 
-            <span class="section-tag">EL PROBLEMA</span>
-
-            <h2>
-                Tu cliente no necesariamente dejó de necesitarte.
-                <span>Simplemente te olvidó.</span>
-            </h2>
-
-            <p>
-                Muchos autolavados dependen de que sus clientes regresen
-                por iniciativa propia. Sin seguimiento, la frecuencia
-                de las visitas se vuelve impredecible.
-            </p>
-
-        </div>
-
-
-        <div class="problem-grid">
-
-            <div class="problem-card">
-
-                <div class="problem-number">01</div>
-
-                <h3>El cliente olvida</h3>
-
-                <p>
-                    Después de lavar su vehículo, el cliente continúa
-                    con su rutina y deja de pensar en el próximo lavado.
-                </p>
-
-            </div>
-
-
-            <div class="problem-card">
-
-                <div class="problem-number">02</div>
-
-                <h3>No existe seguimiento</h3>
-
-                <p>
-                    La relación termina cuando el cliente sale del
-                    autolavado.
-                </p>
-
-            </div>
-
-
-            <div class="problem-card">
-
-                <div class="problem-number">03</div>
-
-                <h3>Demanda impredecible</h3>
-
-                <p>
-                    Sin clientes recurrentes, algunos días pueden estar
-                    llenos y otros tener muy poca demanda.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-        INSIGHT
-========================= -->
-
-<section class="insight">
-
-    <div class="container insight-content">
-
-        <span class="section-tag">NUESTRO INSIGHT</span>
-
-        <h2>
-            “Los clientes no dejan de ir por un mal servicio,
-            <span>sino porque olvidan cuándo deben volver.”</span>
-        </h2>
-
-        <p>
-            Por eso, el objetivo no es solamente atraer nuevos clientes.
-            Es permanecer presente en su rutina y facilitar el momento
-            de regresar.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-        SOLUCIÓN
-========================= -->
-
-<section class="section solution" id="solucion">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <span class="section-tag">LA SOLUCIÓN</span>
-
-            <h2>
-                Convierte una visita ocasional
-                <span>en un hábito.</span>
-            </h2>
-
-            <p>
-                Team Car Wash es un sistema de fidelización y recordatorios
-                diseñado para ayudar a los autolavados a mantener una
-                relación constante con sus clientes.
-            </p>
-
-        </div>
-
-
-        <div class="steps">
-
-            <div class="step">
-
-                <div class="step-icon">👤</div>
-
-                <span>01</span>
-
-                <h3>Registra</h3>
-
-                <p>
-                    Guarda la información del cliente, su vehículo
-                    y su historial de lavados.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="step-icon">📅</div>
-
-                <span>02</span>
-
-                <h3>Haz seguimiento</h3>
-
-                <p>
-                    El sistema registra cuándo fue realizado
-                    el último servicio.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="step-icon">🔔</div>
-
-                <span>03</span>
-
-                <h3>Recuerda</h3>
-
-                <p>
-                    Envía un recordatorio cuando se aproxima
-                    el momento ideal para volver.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="step-icon">⭐</div>
-
-                <span>04</span>
-
-                <h3>Fideliza</h3>
-
-                <p>
-                    Premia la frecuencia mediante beneficios,
-                    planes y recompensas.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-        FUNCIONES
-========================= -->
-
-<section class="section features" id="funciones">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <span class="section-tag">FUNCIONES</span>
-
-            <h2>
-                Todo lo necesario para
-                <span>mantener al cliente conectado.</span>
-            </h2>
-
-        </div>
-
-
-        <div class="features-grid">
-
-            <article class="feature-card large">
-
-                <div class="feature-icon">🔔</div>
-
-                <h3>Recordatorios automatizados</h3>
-
-                <p>
-                    Mantén el lavado presente en la rutina del cliente
-                    enviándole avisos oportunos a través de WhatsApp
-                    o una aplicación.
-                </p>
-
-                <div class="message">
-
-                    <strong>Team Car Wash</strong>
-
-                    <p>
-                        🚗 ¡Hola, Carlos! Ya han pasado 3 semanas
-                        desde tu último lavado.
-                    </p>
-
-                    <button>Agendar lavado</button>
-
-                </div>
-
-            </article>
-
-
-            <article class="feature-card">
-
-                <div class="feature-icon">🎁</div>
-
-                <h3>Recompensas</h3>
-
-                <p>
-                    Incentiva el regreso del cliente mediante beneficios
-                    por frecuencia.
-                </p>
-
-                <div class="mini-stat">
-                    ⭐ 4 / 5 lavados
-                </div>
-
-            </article>
-
-
-            <article class="feature-card">
-
-                <div class="feature-icon">📦</div>
-
-                <h3>Planes mensuales</h3>
-
-                <p>
-                    Crea paquetes que conviertan los lavados ocasionales
-                    en una rutina de mantenimiento.
-                </p>
-
-                <div class="mini-stat">
-                    4 lavados / mes
-                </div>
-
-            </article>
-
-
-            <article class="feature-card">
-
-                <div class="feature-icon">📊</div>
-
-                <h3>Historial del cliente</h3>
-
-                <p>
-                    Conoce la frecuencia de visita y utiliza esa
-                    información para mejorar el seguimiento.
-                </p>
-
-                <div class="mini-stat">
-                    Último lavado: 21 días
-                </div>
-
-            </article>
-
-
-            <article class="feature-card">
-
-                <div class="feature-icon">⚡</div>
-
-                <h3>Prioridad en turnos</h3>
-
-                <p>
-                    Ofrece beneficios exclusivos a los clientes
-                    que forman parte de tus planes.
-                </p>
-
-                <div class="mini-stat">
-                    Cliente frecuente ✓
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-        BENEFICIOS
-========================= -->
-
-<section class="section benefits" id="beneficios">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <span class="section-tag">VALOR</span>
-
-            <h2>
-                Beneficios para
-                <span>todos.</span>
-            </h2>
-
-        </div>
-
-
-        <div class="benefits-grid">
-
-            <div class="benefit-column">
-
-                <div class="benefit-heading">
-                    <span>🚗</span>
-                    <h3>Para el cliente</h3>
-                </div>
-
-                <ul>
-                    <li>✓ Recuerda cuándo debe volver</li>
-                    <li>✓ Ahorra tiempo</li>
-                    <li>✓ Recibe beneficios</li>
-                    <li>✓ Mantiene su vehículo en mejores condiciones</li>
-                    <li>✓ Puede acceder a planes de lavado</li>
-                </ul>
-
-            </div>
-
-
-            <div class="benefit-column highlighted">
-
-                <div class="benefit-heading">
-                    <span>📈</span>
-                    <h3>Para el autolavado</h3>
-                </div>
-
-                <ul>
-                    <li>✓ Aumenta la frecuencia de visita</li>
-                    <li>✓ Fortalece la relación con sus clientes</li>
-                    <li>✓ Genera ingresos recurrentes</li>
-                    <li>✓ Conoce mejor a sus clientes</li>
-                    <li>✓ Hace más predecible la demanda</li>
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-        COMPARACIÓN
-========================= -->
-
-<section class="section comparison">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <span class="section-tag">EL CAMBIO</span>
-
-            <h2>
-                De una necesidad olvidada
-                <span>a un hábito.</span>
-            </h2>
-
-        </div>
-
-
-        <div class="comparison-table">
-
-            <div class="comparison-row header-row">
-
-                <div>ANTES</div>
-                <div>CON TEAM CAR WASH</div>
-
-            </div>
-
-
-            <div class="comparison-row">
-
-                <div>
-                    El cliente vuelve cuando se acuerda.
-                </div>
-
-                <div>
-                    El cliente recibe un recordatorio.
-                </div>
-
-            </div>
-
-
-            <div class="comparison-row">
-
-                <div>
-                    No existe seguimiento después del lavado.
-                </div>
-
-                <div>
-                    Existe comunicación post-servicio.
-                </div>
-
-            </div>
-
-
-            <div class="comparison-row">
-
-                <div>
-                    Clientes ocasionales.
-                </div>
-
-                <div>
-                    Clientes frecuentes.
-                </div>
-
-            </div>
-
-
-            <div class="comparison-row">
-
-                <div>
-                    Demanda difícil de predecir.
-                </div>
-
-                <div>
-                    Mayor recurrencia y estabilidad.
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-        CTA
-========================= -->
-
-<section class="cta" id="contacto">
-
-    <div class="container cta-content">
-
-        <span class="section-tag">
-            TEAM CAR WASH
+        <span class="tag">
+            REGÍSTRATE
         </span>
 
         <h2>
-            Haz que tus clientes
-            <span>vuelvan.</span>
+            Déjanos tus datos y calculamos tu próxima visita.
         </h2>
 
         <p>
-            Transforma el lavado de autos de una necesidad olvidada
-            a un hábito de mantenimiento.
+            Según la frecuencia que elijas,
+            calcularemos automáticamente una fecha aproximada
+            para tu próximo servicio.
         </p>
 
-        <a href="mailto:teamcarwash923@gmail.com" class="btn btn-light">
-            Quiero conocer el sistema →
-        </a>
+        <div class="note">
+            🔒 Tus datos se utilizan para el sistema
+            de seguimiento del prototipo.
+        </div>
 
     </div>
+
+
+
+    <form id="clientForm" class="form">
+
+        <label>
+            Nombre completo
+
+            <input
+                type="text"
+                name="nombre"
+                placeholder="Ej. Juan Pérez"
+                required>
+
+        </label>
+
+
+        <label>
+            WhatsApp
+
+            <input
+                type="tel"
+                name="telefono"
+                placeholder="3001234567"
+                required>
+
+        </label>
+
+
+        <label>
+            Tipo de vehículo
+
+            <select name="vehiculo" required>
+
+                <option value="">
+                    Selecciona
+                </option>
+
+                <option>
+                    Automóvil
+                </option>
+
+                <option>
+                    Camioneta
+                </option>
+
+                <option>
+                    Moto
+                </option>
+
+                <option>
+                    Otro
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <label>
+            Fecha del último lavado
+
+            <input
+                type="date"
+                name="ultimoLavado"
+                required>
+
+        </label>
+
+
+        <label>
+            ¿Cada cuánto quieres volver?
+
+            <select name="frecuencia" required>
+
+                <option value="">
+                    Selecciona
+                </option>
+
+                <option value="7">
+                    Cada 7 días
+                </option>
+
+                <option value="15">
+                    Cada 15 días
+                </option>
+
+                <option value="30">
+                    Cada 30 días
+                </option>
+
+                <option value="45">
+                    Cada 45 días
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <button
+            type="submit"
+            class="btn btn-dark full">
+
+            Registrar mis datos
+
+        </button>
+
+
+        <div id="formMessage"></div>
+
+    </form>
 
 </section>
 
 </main>
 
 
-<!-- =========================
-        FOOTER
-========================= -->
 
 <footer>
 
-    <div class="container footer-content">
+    <strong>
+        🚗 Team Car Wash
+    </strong>
 
-        <div>
-            <strong>TEAM CAR WASH</strong>
-            <p>
-                Fidelización y seguimiento para autolavados.
-            </p>
-        </div>
+    <span>
+        © 2026 · Lava, cuida y regresa
+    </span>
 
-        <div>
-            <p>teamcarwash923@gmail.com</p>
-            <p>© 2026 Team Car Wash</p>
-        </div>
-
-    </div>
+    <span>
+        teamcarwash923@gmail.com
+    </span>
 
 </footer>
 
