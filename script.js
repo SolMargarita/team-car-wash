@@ -1,1079 +1,1064 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+const STORAGE_KEY = "teamCarWashClients";
+const WASHES_KEY = "teamCarWashWashes";
 
 
-:root {
+// ========================================
+// DATOS
+// ========================================
 
-    --dark: #101820;
-    --green: #d8ff3e;
-    --green-dark: #b8e91d;
+function getClients() {
 
-    --background: #f5f7f8;
-    --white: #ffffff;
-
-    --text: #101820;
-    --gray: #69757d;
-    --border: #e3e8ea;
-
-    --red: #e95555;
-    --yellow: #d99616;
-    --success: #159a69;
-}
-
-
-* {
-    box-sizing: border-box;
-}
-
-
-html {
-    scroll-behavior: smooth;
-}
-
-
-body {
-
-    margin: 0;
-
-    background: var(--background);
-
-    color: var(--text);
-
-    font-family: "DM Sans", sans-serif;
-}
-
-
-h1,
-h2,
-h3 {
-
-    font-family: "Space Grotesk", sans-serif;
-}
-
-
-p {
-
-    color: var(--gray);
-
-    line-height: 1.7;
-}
-
-
-a {
-
-    text-decoration: none;
-
-    color: inherit;
-}
-
-
-/* NAVBAR */
-
-.navbar {
-
-    height: 78px;
-
-    padding: 0 6%;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    background: white;
-
-    border-bottom: 1px solid var(--border);
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 20;
-}
-
-
-.logo {
-
-    font-family: "Space Grotesk";
-
-    font-weight: 700;
-
-    font-size: 20px;
-}
-
-
-.navbar nav {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 22px;
-}
-
-
-.navbar nav a {
-
-    font-size: 14px;
-
-    font-weight: 600;
-}
-
-
-.nav-vip {
-
-    background: var(--dark);
-
-    color: white;
-
-    padding: 10px 14px;
-
-    border-radius: 10px;
-}
-
-
-.nav-admin {
-
-    background: var(--green);
-
-    padding: 10px 14px;
-
-    border-radius: 10px;
-}
-
-
-/* GENERAL */
-
-.tag {
-
-    display: inline-block;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-    color: #647078;
-
-    margin-bottom: 15px;
-}
-
-
-.btn {
-
-    border: none;
-
-    padding: 14px 20px;
-
-    border-radius: 11px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    display: inline-flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    font-family: inherit;
-}
-
-
-.btn-dark {
-
-    background: var(--dark);
-
-    color: white;
-}
-
-
-.btn-light {
-
-    background: white;
-
-    border: 1px solid var(--border);
-}
-
-
-.full {
-
-    width: 100%;
-}
-
-
-/* HERO */
-
-.hero {
-
-    min-height: 650px;
-
-    padding: 80px 8%;
-
-    display: grid;
-
-    grid-template-columns: 1.4fr .6fr;
-
-    align-items: center;
-
-    gap: 70px;
-
-    background: linear-gradient(
-        120deg,
-        white,
-        #f1f5ef
-    );
-}
-
-
-.hero h1 {
-
-    font-size: clamp(
-        45px,
-        6vw,
-        78px
+    return JSON.parse(
+        localStorage.getItem(STORAGE_KEY) || "[]"
     );
 
-    line-height: .98;
-
-    letter-spacing: -4px;
-
-    max-width: 850px;
-}
-
-
-.hero h1 span {
-
-    background: var(--green);
-
-    padding: 0 8px;
-}
-
-
-.hero-content p {
-
-    max-width: 650px;
-
-    font-size: 18px;
-}
-
-
-.hero-buttons {
-
-    display: flex;
-
-    gap: 12px;
-
-    margin-top: 30px;
-
-    flex-wrap: wrap;
-}
-
-
-.hero-card {
-
-    background: var(--dark);
-
-    color: white;
-
-    padding: 35px;
-
-    border-radius: 25px;
-}
-
-
-.car-icon {
-
-    font-size: 60px;
-
-    margin-bottom: 30px;
-}
-
-
-.hero-card small {
-
-    color: #aab4ba;
-
-    letter-spacing: 2px;
-}
-
-
-.hero-card h3 {
-
-    font-size: 28px;
-}
-
-
-/* SECTIONS */
-
-.section {
-
-    padding: 100px 8%;
-
-    max-width: 1400px;
-
-    margin: auto;
-}
-
-
-.section-title {
-
-    max-width: 750px;
-}
-
-
-.section-title h2 {
-
-    font-size: 45px;
-
-    letter-spacing: -2px;
-}
-
-
-.center {
-
-    text-align: center;
-
-    margin: auto;
-}
-
-
-/* FEATURES */
-
-.features {
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 18px;
-
-    margin-top: 50px;
-}
-
-
-.feature {
-
-    background: white;
-
-    border: 1px solid var(--border);
-
-    padding: 30px;
-
-    border-radius: 20px;
-}
-
-
-.feature span {
-
-    font-size: 30px;
-}
-
-
-.feature h3 {
-
-    margin-top: 25px;
-}
-
-
-/* SERVICES */
-
-.services {
-
-    background: var(--dark);
-
-    padding: 100px 8%;
-
-    color: white;
-}
-
-
-.services h2 {
-
-    color: white;
-}
-
-
-.service-grid {
-
-    max-width: 1150px;
-
-    margin: 50px auto 0;
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 18px;
-}
-
-
-.service-card {
-
-    background: white;
-
-    color: var(--text);
-
-    border-radius: 20px;
-
-    padding: 30px;
-
-    min-height: 420px;
-
-    position: relative;
-}
-
-
-.service-card.featured {
-
-    border: 3px solid var(--green);
-}
-
-
-.popular {
-
-    position: absolute;
-
-    top: 15px;
-
-    right: 15px;
-
-    background: var(--green);
-
-    padding: 7px 10px;
-
-    border-radius: 7px;
-
-    font-size: 9px;
-
-    font-weight: 800;
-}
-
-
-.number {
-
-    color: #88939a;
-
-    font-size: 12px;
-
-    font-weight: 700;
-}
-
-
-.service-card h3 {
-
-    font-size: 30px;
-
-    margin-top: 40px;
-}
-
-
-.service-card strong {
-
-    font-family: "Space Grotesk";
-
-    font-size: 34px;
-}
-
-
-.service-card li {
-
-    color: var(--gray);
-
-    line-height: 2;
-}
-
-
-.service-button {
-
-    width: 100%;
-
-    border: none;
-
-    background: #edf0f1;
-
-    padding: 12px;
-
-    border-radius: 10px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-}
-
-
-/* REGISTER */
-
-.register {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 70px;
-
-    align-items: start;
-}
-
-
-.register h2 {
-
-    font-size: 43px;
-}
-
-
-.note {
-
-    background: #edf1f2;
-
-    padding: 15px;
-
-    border-radius: 12px;
-
-    font-size: 13px;
-}
-
-
-/* FORM */
-
-.form {
-
-    background: white;
-
-    padding: 30px;
-
-    border-radius: 22px;
-
-    border: 1px solid var(--border);
-
-    display: grid;
-
-    gap: 16px;
-}
-
-
-.form label,
-.modal-content label {
-
-    display: grid;
-
-    gap: 7px;
-
-    font-size: 12px;
-
-    font-weight: 700;
-}
-
-
-.form input,
-.form select,
-.modal-content input,
-.modal-content select,
-#vipPhone,
-#adminSearch {
-
-    width: 100%;
-
-    padding: 13px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 10px;
-
-    font: inherit;
-}
-
-
-/* FOOTER */
-
-footer {
-
-    background: var(--dark);
-
-    color: #ccd3d7;
-
-    padding: 30px 8%;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    font-size: 12px;
-}
-
-
-/* VIP */
-
-.portal {
-
-    max-width: 1100px;
-
-    margin: auto;
-
-    padding: 80px 5%;
-}
-
-
-.vip-search {
-
-    background: white;
-
-    padding: 45px;
-
-    border-radius: 25px;
-
-    border: 1px solid var(--border);
-}
-
-
-.vip-search h1 {
-
-    font-size: 50px;
-
-    margin: 0;
-}
-
-
-#vipSearch {
-
-    display: flex;
-
-    gap: 10px;
-
-    margin-top: 25px;
-}
-
-
-#vipSearch input {
-
-    flex: 1;
-}
-
-
-.vip-result {
-
-    margin-top: 30px;
-}
-
-
-.hidden {
-
-    display: none !important;
-}
-
-
-.welcome {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-bottom: 20px;
-}
-
-
-.vip-grid {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 16px;
-}
-
-
-.vip-card {
-
-    background: white;
-
-    border: 1px solid var(--border);
-
-    border-radius: 20px;
-
-    padding: 28px;
-
-    min-height: 150px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-}
-
-
-.vip-card strong {
-
-    font-family: "Space Grotesk";
-
-    font-size: 28px;
-}
-
-
-.vip-card small {
-
-    color: #758087;
-
-    font-size: 10px;
-
-    letter-spacing: 1px;
-
-    font-weight: 700;
-}
-
-
-.card-header {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    margin-bottom: 18px;
-}
-
-
-.progress {
-
-    height: 12px;
-
-    background: #edf0f1;
-
-    border-radius: 20px;
-
-    overflow: hidden;
-}
-
-
-.progress span {
-
-    display: block;
-
-    height: 100%;
-
-    width: 0;
-
-    background: var(--green-dark);
-
-    transition: .4s;
-}
-
-
-/* MODAL */
-
-.modal {
-
-    position: fixed;
-
-    inset: 0;
-
-    background: #101820aa;
-
-    display: grid;
-
-    place-items: center;
-
-    padding: 20px;
-
-    z-index: 50;
-}
-
-
-.modal-content {
-
-    background: white;
-
-    width: min(500px, 100%);
-
-    padding: 35px;
-
-    border-radius: 22px;
-
-    position: relative;
-}
-
-
-.close {
-
-    position: absolute;
-
-    top: 10px;
-
-    right: 15px;
-
-    border: none;
-
-    background: none;
-
-    font-size: 30px;
-
-    cursor: pointer;
-}
-
-
-/* ADMIN */
-
-.admin {
-
-    max-width: 1400px;
-
-    margin: auto;
-
-    padding: 60px 5%;
-}
-
-
-.admin-header {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: end;
-
-    margin-bottom: 30px;
-}
-
-
-.metrics {
-
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 15px;
-}
-
-
-.metric {
-
-    background: white;
-
-    border: 1px solid var(--border);
-
-    border-radius: 20px;
-
-    padding: 25px;
-
-    display: grid;
-
-    gap: 7px;
-}
-
-
-.metric span {
-
-    font-size: 25px;
-}
-
-
-.metric small {
-
-    color: #758087;
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    letter-spacing: 1px;
-}
-
-
-.metric strong {
-
-    font-family: "Space Grotesk";
-
-    font-size: 35px;
-}
-
-
-.table-section {
-
-    background: white;
-
-    margin-top: 25px;
-
-    border-radius: 20px;
-
-    border: 1px solid var(--border);
-
-    overflow: hidden;
-}
-
-
-.table-header {
-
-    padding: 25px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-}
-
-
-.table-header h2 {
-
-    margin: 0;
-}
-
-
-.table-container {
-
-    overflow-x: auto;
-}
-
-
-table {
-
-    width: 100%;
-
-    border-collapse: collapse;
-
-    font-size: 13px;
 }
-
 
-th,
-td {
 
-    padding: 17px;
+function saveClients(clients) {
 
-    text-align: left;
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(clients)
+    );
 
-    border-bottom: 1px solid var(--border);
-
-    white-space: nowrap;
 }
-
 
-th {
 
-    font-size: 10px;
+function cleanPhone(phone) {
 
-    letter-spacing: 1px;
+    return String(phone || "")
+        .replace(/\D/g, "");
 
-    color: #758087;
 }
-
-
-.action {
 
-    border: none;
 
-    padding: 8px 10px;
+function formatDate(date) {
 
-    border-radius: 8px;
+    return new Date(
+        date + "T12:00:00"
+    ).toLocaleDateString(
+        "es-CO",
+        {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        }
+    );
 
-    cursor: pointer;
-
-    font-weight: 700;
 }
-
-
-.whatsapp {
 
-    background: #dcf7e9;
 
-    color: #14734f;
-}
-
+function dateISO(date) {
 
-.wash {
+    return new Date(date)
+        .toISOString()
+        .slice(0, 10);
 
-    background: var(--green);
 }
-
-
-.status {
 
-    padding: 6px 10px;
 
-    border-radius: 8px;
+function addDays(date, days) {
 
-    font-size: 10px;
+    const result = new Date(
+        date + "T12:00:00"
+    );
 
-    font-weight: 800;
-}
-
-
-.status.green {
+    result.setDate(
+        result.getDate() + Number(days)
+    );
 
-    background: #dff6ec;
+    return result;
 
-    color: #14734f;
 }
 
 
-.status.yellow {
+function daysSince(date) {
 
-    background: #fff0d3;
+    const start = new Date(
+        date + "T12:00:00"
+    );
 
-    color: #98640e;
-}
-
+    const now = new Date();
 
-.status.red {
+    now.setHours(12, 0, 0, 0);
 
-    background: #ffe0e0;
+    return Math.max(
+        0,
+        Math.floor(
+            (now - start) / 86400000
+        )
+    );
 
-    color: #a53232;
 }
-
-
-/* MOBILE */
 
-@media(max-width: 850px) {
 
-    .navbar nav {
+// ========================================
+// CLIENTES DEMO
+// ========================================
 
-        gap: 10px;
+function createDemoClients() {
 
-        font-size: 12px;
+    if (getClients().length > 0) {
+        return;
     }
 
-    .hero,
-    .register {
 
-        grid-template-columns: 1fr;
-    }
+    const today = new Date();
 
-    .features,
-    .service-grid,
-    .metrics,
-    .vip-grid {
 
-        grid-template-columns: 1fr;
-    }
+    const clients = [
 
-    .hero {
+        {
+            id: crypto.randomUUID(),
 
-        padding-top: 60px;
-    }
+            nombre: "Juan Pérez",
 
-    .service-card.featured {
+            telefono: "3001234567",
 
-        transform: none;
-    }
+            vehiculo: "Automóvil",
 
-    footer {
+            ultimoLavado:
+                dateISO(
+                    addDays(
+                        dateISO(today),
+                        -15
+                    )
+                ),
 
-        flex-direction: column;
-    }
+            frecuencia: 15,
 
-    .admin-header {
+            visitas: 3
 
-        align-items: flex-start;
+        },
 
-        flex-direction: column;
 
-        gap: 15px;
+        {
+            id: crypto.randomUUID(),
+
+            nombre: "María López",
+
+            telefono: "3017654321",
+
+            vehiculo: "Camioneta",
+
+            ultimoLavado:
+                dateISO(
+                    addDays(
+                        dateISO(today),
+                        -4
+                    )
+                ),
+
+            frecuencia: 30,
+
+            visitas: 5
+
+        },
+
+
+        {
+            id: crypto.randomUUID(),
+
+            nombre: "Carlos Díaz",
+
+            telefono: "3105557788",
+
+            vehiculo: "Automóvil",
+
+            ultimoLavado:
+                dateISO(
+                    addDays(
+                        dateISO(today),
+                        -56
+                    )
+                ),
+
+            frecuencia: 30,
+
+            visitas: 2
+
+        }
+
+    ];
+
+
+    saveClients(clients);
+
+
+    if (
+        !localStorage.getItem(WASHES_KEY)
+    ) {
+
+        localStorage.setItem(
+            WASHES_KEY,
+            "12"
+        );
+
     }
 
 }
+
+
+createDemoClients();
+
+
+// ========================================
+// REGISTRO DEL CLIENTE
+// ========================================
+
+const clientForm =
+    document.getElementById(
+        "clientForm"
+    );
+
+
+if (clientForm) {
+
+    clientForm.addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            const data =
+                Object.fromEntries(
+                    new FormData(clientForm)
+                );
+
+
+            const phone =
+                cleanPhone(
+                    data.telefono
+                );
+
+
+            const clients =
+                getClients();
+
+
+            const existing =
+                clients.find(
+                    client =>
+                        cleanPhone(
+                            client.telefono
+                        ) === phone
+                );
+
+
+            const nextDate =
+                addDays(
+                    data.ultimoLavado,
+                    data.frecuencia
+                );
+
+
+            const client = {
+
+                id:
+                    existing?.id ||
+                    crypto.randomUUID(),
+
+                nombre:
+                    data.nombre,
+
+                telefono:
+                    phone,
+
+                vehiculo:
+                    data.vehiculo,
+
+                ultimoLavado:
+                    data.ultimoLavado,
+
+                frecuencia:
+                    Number(
+                        data.frecuencia
+                    ),
+
+                visitas:
+                    existing?.visitas || 0
+
+            };
+
+
+            if (existing) {
+
+                Object.assign(
+                    existing,
+                    client
+                );
+
+            } else {
+
+                clients.push(client);
+
+            }
+
+
+            saveClients(clients);
+
+
+            const message =
+                document.getElementById(
+                    "formMessage"
+                );
+
+
+            message.innerHTML = `
+                <p style="color:#159a69">
+                    ✅ Registro exitoso.
+                    <br>
+                    Tu próximo servicio recomendado es:
+                    <strong>
+                        ${formatDate(
+                            dateISO(nextDate)
+                        )}
+                    </strong>
+                </p>
+            `;
+
+
+            const heroDate =
+                document.getElementById(
+                    "heroDate"
+                );
+
+
+            if (heroDate) {
+
+                heroDate.textContent =
+                    formatDate(
+                        dateISO(nextDate)
+                    );
+
+            }
+
+        }
+    );
+
+}
+
+
+// ========================================
+// BOTONES DE SERVICIOS
+// ========================================
+
+document
+    .querySelectorAll(".service-button")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const service =
+                    button.dataset.service;
+
+
+                document
+                    .getElementById("registro")
+                    ?.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+
+                setTimeout(
+                    () => {
+
+                        alert(
+                            `Has elegido el servicio ${service}. Completa el formulario para continuar.`
+                        );
+
+                    },
+                    500
+                );
+
+            }
+        );
+
+    });
+
+
+// ========================================
+// PORTAL VIP
+// ========================================
+
+const vipSearch =
+    document.getElementById(
+        "vipSearch"
+    );
+
+
+if (vipSearch) {
+
+    vipSearch.addEventListener(
+        "submit",
+        event => {
+
+            event.preventDefault();
+
+
+            const phone =
+                cleanPhone(
+                    document.getElementById(
+                        "vipPhone"
+                    ).value
+                );
+
+
+            const client =
+                getClients().find(
+                    client =>
+                        cleanPhone(
+                            client.telefono
+                        ) === phone
+                );
+
+
+            const result =
+                document.getElementById(
+                    "vipResult"
+                );
+
+
+            const error =
+                document.getElementById(
+                    "vipError"
+                );
+
+
+            if (!client) {
+
+                result.classList.add(
+                    "hidden"
+                );
+
+
+                error.innerHTML = `
+                    No encontramos ese número.
+                    <br><br>
+                    Prueba con:
+                    <strong>3001234567</strong>,
+                    <strong>3017654321</strong>
+                    o
+                    <strong>3105557788</strong>.
+                `;
+
+                return;
+
+            }
+
+
+            error.textContent = "";
+
+            result.classList.remove(
+                "hidden"
+            );
+
+
+            renderVIP(client);
+
+        }
+    );
+
+}
+
+
+function renderVIP(client) {
+
+    document.getElementById(
+        "vipName"
+    ).textContent =
+        client.nombre;
+
+
+    document.getElementById(
+        "vipVehicle"
+    ).textContent =
+        `${client.vehiculo} · ${client.telefono}`;
+
+
+    document.getElementById(
+        "lastWash"
+    ).textContent =
+        formatDate(
+            client.ultimoLavado
+        );
+
+
+    const days =
+        daysSince(
+            client.ultimoLavado
+        );
+
+
+    document.getElementById(
+        "daysPassed"
+    ).textContent =
+        `Han pasado ${days} días.`;
+
+
+    const next =
+        addDays(
+            client.ultimoLavado,
+            client.frecuencia
+        );
+
+
+    document.getElementById(
+        "nextWash"
+    ).textContent =
+        formatDate(
+            dateISO(next)
+        );
+
+
+    const visits =
+        Number(
+            client.visitas || 0
+        );
+
+
+    const progress =
+        visits % 5 === 0 &&
+        visits > 0
+            ? 5
+            : visits % 5;
+
+
+    document.getElementById(
+        "progressText"
+    ).textContent =
+        `${progress}/5 lavados`;
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        `${progress * 20}%`;
+
+
+    document.getElementById(
+        "progressMessage"
+    ).textContent =
+        progress === 5
+            ? "🎁 ¡Beneficio desbloqueado!"
+            : `Te faltan ${5 - progress} lavados para tu próximo beneficio.`;
+
+
+    let status;
+
+    if (
+        days >=
+        Number(client.frecuencia) + 15
+    ) {
+
+        status = {
+            text: "Urgente",
+            class: "status red"
+        };
+
+    }
+
+    else if (
+        days >=
+        Number(client.frecuencia)
+    ) {
+
+        status = {
+            text: "Pendiente",
+            class: "status yellow"
+        };
+
+    }
+
+    else {
+
+        status = {
+            text: "Al día",
+            class: "status green"
+        };
+
+    }
+
+
+    const statusElement =
+        document.getElementById(
+            "vipStatus"
+        );
+
+
+    statusElement.textContent =
+        status.text;
+
+
+    statusElement.className =
+        status.class;
+
+
+    let recommendation;
+
+
+    if (
+        days >=
+        Number(client.frecuencia) + 15
+    ) {
+
+        recommendation =
+            "Tu lavado está bastante atrasado. Te recomendamos agendar una visita pronto.";
+
+    }
+
+    else if (
+        days >=
+        Number(client.frecuencia)
+    ) {
+
+        recommendation =
+            "Ya llegó el momento recomendado para tu próximo lavado. ¡Puedes reservar tu cita!";
+
+    }
+
+    else {
+
+        recommendation =
+            `Vas muy bien. Tu próxima fecha recomendada es ${formatDate(
+                dateISO(next)
+            )}.`;
+
+    }
+
+
+    document.getElementById(
+        "recommendation"
+    ).textContent =
+        recommendation;
+
+}
+
+
+// ========================================
+// MODAL DE CITA
+// ========================================
+
+const bookingModal =
+    document.getElementById(
+        "bookingModal"
+    );
+
+
+document
+    .getElementById(
+        "openBooking"
+    )
+    ?.addEventListener(
+        "click",
+        () => {
+
+            bookingModal.classList.remove(
+                "hidden"
+            );
+
+        }
+    );
+
+
+document
+    .getElementById(
+        "closeBooking"
+    )
+    ?.addEventListener(
+        "click",
+        () => {
+
+            bookingModal.classList.add(
+                "hidden"
+            );
+
+        }
+    );
+
+
+document
+    .getElementById(
+        "bookingForm"
+    )
+    ?.addEventListener(
+        "submit",
+        event => {
+
+            event.preventDefault();
+
+
+            document.getElementById(
+                "bookingMessage"
+            ).innerHTML = `
+                <p style="color:#159a69">
+                    ✅ Solicitud enviada correctamente.
+                    <br>
+                    El negocio puede confirmar tu turno.
+                </p>
+            `;
+
+        }
+    );
+
+
+// ========================================
+// DASHBOARD
+// ========================================
+
+function statusClient(client) {
+
+    const days =
+        daysSince(
+            client.ultimoLavado
+        );
+
+
+    if (
+        days >=
+        Number(client.frecuencia) + 15
+    ) {
+
+        return {
+            text: "Urgente",
+            class: "red"
+        };
+
+    }
+
+
+    if (
+        days >=
+        Number(client.frecuencia)
+    ) {
+
+        return {
+            text: "Pendiente",
+            class: "yellow"
+        };
+
+    }
+
+
+    return {
+        text: "Al día",
+        class: "green"
+    };
+
+}
+
+
+function renderAdmin(
+    search = ""
+) {
+
+    const table =
+        document.getElementById(
+            "clientTable"
+        );
+
+
+    if (!table) {
+        return;
+    }
+
+
+    const clients =
+        getClients().filter(
+            client =>
+                `${client.nombre} ${client.telefono}`
+                    .toLowerCase()
+                    .includes(
+                        search.toLowerCase()
+                    )
+        );
+
+
+    table.innerHTML =
+        clients.map(
+            client => {
+
+                const status =
+                    statusClient(
+                        client
+                    );
+
+
+                const whatsappMessage =
+                    encodeURIComponent(
+                        `Hola ${client.nombre} 👋 Somos Team Car Wash 🚗. Han pasado ${daysSince(client.ultimoLavado)} días desde tu último lavado. ¿Te gustaría agendar nuevamente tu servicio?`
+                    );
+
+
+                return `
+
+                <tr>
+
+                    <td>
+                        <strong>
+                            ${client.nombre}
+                        </strong>
+                        <br>
+                        <small>
+                            ${client.vehiculo}
+                        </small>
+                    </td>
+
+
+                    <td>
+                        ${client.telefono}
+                    </td>
+
+
+                    <td>
+                        ${formatDate(
+                            client.ultimoLavado
+                        )}
+                    </td>
+
+
+                    <td>
+                        ${daysSince(
+                            client.ultimoLavado
+                        )}
+                    </td>
+
+
+                    <td>
+                        ${client.visitas}
+                    </td>
+
+
+                    <td>
+
+                        <span
+                            class="status ${status.class}">
+
+                            ${status.text}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <a
+                            class="action whatsapp"
+                            target="_blank"
+                            href="https://wa.me/57${client.telefono}?text=${whatsappMessage}">
+
+                            WhatsApp
+
+                        </a>
+
+
+                        <button
+                            class="action wash"
+                            onclick="markWash('${client.id}')">
+
+                            Lavó Hoy
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                `;
+
+            }
+        ).join("");
+
+
+    updateMetrics();
+
+}
+
+
+function updateMetrics() {
+
+    const clients =
+        getClients();
+
+
+    const pending =
+        clients.filter(
+            client =>
+                statusClient(client).text
+                !== "Al día"
+        ).length;
+
+
+    const retained =
+        clients.filter(
+            client =>
+                Number(client.visitas) > 1
+        ).length;
+
+
+    document.getElementById(
+        "metricClients"
+    ).textContent =
+        clients.length;
+
+
+    document.getElementById(
+        "metricPending"
+    ).textContent =
+        pending;
+
+
+    document.getElementById(
+        "metricWashes"
+    ).textContent =
+        localStorage.getItem(
+            WASHES_KEY
+        ) || 0;
+
+
+    document.getElementById(
+        "metricRetention"
+    ).textContent =
+        clients.length
+            ? Math.round(
+                retained /
+                clients.length *
+                100
+            ) + "%"
+            : "0%";
+
+}
+
+
+// ========================================
+// BOTÓN "LAVÓ HOY"
+// ========================================
+
+window.markWash =
+function(id) {
+
+    const clients =
+        getClients();
+
+
+    const client =
+        clients.find(
+            client =>
+                client.id === id
+        );
+
+
+    if (!client) {
+        return;
+    }
+
+
+    client.ultimoLavado =
+        dateISO(
+            new Date()
+        );
+
+
+    client.visitas =
+        Number(
+            client.visitas || 0
+        ) + 1;
+
+
+    saveClients(
+        clients
+    );
+
+
+    const washes =
+        Number(
+            localStorage.getItem(
+                WASHES_KEY
+            ) || 0
+        );
+
+
+    localStorage.setItem(
+        WASHES_KEY,
+        washes + 1
+    );
+
+
+    renderAdmin();
+
+
+    alert(
+        `✅ ${client.nombre} registró un lavado hoy.\n\nVisitas: ${client.visitas}`
+    );
+
+};
+
+
+// ========================================
+// BUSCADOR ADMIN
+// ========================================
+
+const adminSearch =
+    document.getElementById(
+        "adminSearch"
+    );
+
+
+if (adminSearch) {
+
+    renderAdmin();
+
+
+    adminSearch.addEventListener(
+        "input",
+        event => {
+
+            renderAdmin(
+                event.target.value
+            );
+
+        }
+    );
+
+}
+
+
+// ========================================
+// RESET DEMO
+// ========================================
+
+document
+    .getElementById(
+        "clearDemo"
+    )
+    ?.addEventListener(
+        "click",
+        () => {
+
+            localStorage.removeItem(
+                STORAGE_KEY
+            );
+
+
+            localStorage.removeItem(
+                WASHES_KEY
+            );
+
+
+            createDemoClients();
+
+
+            renderAdmin();
+
+
+            alert(
+                "Demo restablecida."
+            );
+
+        }
+    );
