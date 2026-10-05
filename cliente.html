@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Cliente VIP | Team Car Wash
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+
+<body>
+
+<header class="navbar">
+
+    <a
+        href="index.html"
+        class="logo">
+
+        🚗 Team Car Wash
+
+    </a>
+
+    <nav>
+
+        <a href="index.html">
+            Volver al sitio
+        </a>
+
+        <a
+            href="admin.html"
+            class="nav-admin">
+
+            Admin
+
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="portal">
+
+    <section class="vip-search">
+
+        <span class="tag">
+            CLIENTE FRECUENTE / VIP
+        </span>
+
+        <h1>
+            Consulta tu progreso.
+        </h1>
+
+        <p>
+            Ingresa tu número de WhatsApp
+            para consultar tus visitas.
+        </p>
+
+
+        <form id="vipSearch">
+
+            <input
+                type="tel"
+                id="vipPhone"
+                placeholder="Ej. 3001234567"
+                required>
+
+            <button
+                class="btn btn-dark">
+
+                Buscar
+
+            </button>
+
+        </form>
+
+
+        <p id="vipError"></p>
+
+    </section>
+
+
+
+    <section
+        id="vipResult"
+        class="vip-result hidden">
+
+
+        <div class="welcome">
+
+            <div>
+
+                <span class="tag">
+                    BIENVENIDO
+                </span>
+
+                <h2 id="vipName">
+                    Cliente
+                </h2>
+
+                <p id="vipVehicle"></p>
+
+            </div>
+
+            <span id="vipStatus"></span>
+
+        </div>
+
+
+
+        <div class="vip-grid">
+
+
+            <!-- FIDELIZACIÓN -->
+
+            <div class="vip-card">
+
+                <div class="card-header">
+
+                    <span>
+                        🏆 Fidelización
+                    </span>
+
+                    <strong id="progressText">
+                        0/5
+                    </strong>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <span id="progressBar"></span>
+
+                </div>
+
+
+                <p id="progressMessage"></p>
+
+            </div>
+
+
+
+            <!-- ÚLTIMO LAVADO -->
+
+            <div class="vip-card">
+
+                <small>
+                    ÚLTIMO LAVADO
+                </small>
+
+                <strong id="lastWash">
+                    -
+                </strong>
+
+                <span id="daysPassed">
+                    -
+                </span>
+
+            </div>
+
+
+
+            <!-- PRÓXIMO -->
+
+            <div class="vip-card">
+
+                <small>
+                    PRÓXIMO SERVICIO
+                </small>
+
+                <strong id="nextWash">
+                    -
+                </strong>
+
+                <span>
+                    Fecha recomendada
+                </span>
+
+            </div>
+
+
+
+            <!-- RECOMENDACIÓN -->
+
+            <div class="vip-card recommendation">
+
+                <small>
+                    💡 RECOMENDACIÓN
+                </small>
+
+                <p id="recommendation"></p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="openBooking"
+            class="btn btn-dark full">
+
+            📅 Agendar cita prioritaria
+
+        </button>
+
+    </section>
+
+</main>
+
+
+
+<!-- MODAL -->
+
+<div
+    id="bookingModal"
+    class="modal hidden">
+
+    <div class="modal-content">
+
+        <button
+            id="closeBooking"
+            class="close">
+
+            ×
+
+        </button>
+
+
+        <span class="tag">
+            CITA PRIORITARIA
+        </span>
+
+        <h2>
+            Reserva tu próximo servicio
+        </h2>
+
+
+        <form id="bookingForm">
+
+            <label>
+                Servicio
+
+                <select name="servicio">
+
+                    <option>
+                        Express
+                    </option>
+
+                    <option>
+                        Premium
+                    </option>
+
+                    <option>
+                        Detailing
+                    </option>
+
+                </select>
+
+            </label>
+
+
+            <label>
+                Fecha
+
+                <input
+                    type="date"
+                    required>
+
+            </label>
+
+
+            <label>
+                Hora
+
+                <input
+                    type="time"
+                    required>
+
+            </label>
+
+
+            <button
+                class="btn btn-dark full">
+
+                Solicitar turno
+
+            </button>
+
+        </form>
+
+
+        <div id="bookingMessage"></div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
